@@ -25,17 +25,25 @@ async function ensureStore() {
 
 export async function saveLocalInquiry(
   inquiry: Omit<Inquiry, "id">,
-): Promise<Inquiry> {
-  await ensureStore();
-  const raw = await readFile(dataFile, "utf8");
-  const list = JSON.parse(raw) as Inquiry[];
-  const row: Inquiry = {
-    id: crypto.randomUUID(),
-    ...inquiry,
-  };
-  list.unshift(row);
-  await writeFile(dataFile, `${JSON.stringify(list, null, 2)}\n`, "utf8");
-  return row;
+): Promise<Inquiry | null> {
+  try {
+    await ensureStore();
+    const raw = await readFile(dataFile, "utf8");
+    const list = JSON.parse(raw) as Inquiry[];
+    const row: Inquiry = {
+      id: crypto.randomUUID(),
+      ...inquiry,
+    };
+    list.unshift(row);
+    await writeFile(dataFile, `${JSON.stringify(list, null, 2)}\n`, "utf8");
+    return row;
+  } catch (error) {
+    console.error(
+      "Local inquiry save failed:",
+      error instanceof Error ? error.message : error,
+    );
+    return null;
+  }
 }
 
 export async function countLocalInquiries() {

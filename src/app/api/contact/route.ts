@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { isMailConfigured, sendInquiryEmail } from "@/lib/email";
 import { countLocalInquiries, saveLocalInquiry } from "@/lib/local-store";
 
+export const runtime = "nodejs";
+
 type InquiryBody = {
   name?: string;
   email?: string;
@@ -39,28 +41,35 @@ export async function POST(request: Request) {
     created_at: new Date().toISOString(),
   };
 
-  if (isMailConfigured()) {
-    try {
+  try {
+    if (isMailConfigured()) {
       await sendInquiryEmail(payload);
       return NextResponse.json({
         ok: true,
         delivery: "resend",
       });
-    } catch (error) {
-      console.error(
-        "Resend send failed:",
-        error instanceof Error ? error.message : error,
-      );
     }
+  } catch (error) {
+    console.error(
+      "Resend send failed:",
+      error instanceof Error ? error.message : error,
+    );
   }
 
   const saved = await saveLocalInquiry(payload);
 
-  return NextResponse.json({
-    ok: true,
-    delivery: "local",
-    id: saved.id,
-  });
+  if (saved) {
+    return NextResponse.json({
+      ok: true,
+      delivery: "local",
+      id: saved.id,
+    });
+  }
+
+  return NextResponse.json(
+    { error: "Could not send inquiry. Try email instead." },
+    { status: 502 },
+  );
 }
 
 export async function GET() {
