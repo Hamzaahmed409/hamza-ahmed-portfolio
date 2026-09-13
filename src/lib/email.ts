@@ -2,7 +2,7 @@ import { Resend } from "resend";
 import { profile } from "@/content/profile";
 
 export function isMailConfigured() {
-  return Boolean(process.env.RESEND_API_KEY);
+  return (process.env.RESEND_API_KEY ?? "").trim().startsWith("re_");
 }
 
 function escapeHtml(value: string) {

@@ -30,10 +30,19 @@ export function ContactForm() {
         }),
       });
 
-      const result = (await response.json()) as { error?: string };
+      const text = await response.text();
+      let result: { error?: string } = {};
+
+      if (text) {
+        try {
+          result = JSON.parse(text) as { error?: string };
+        } catch {
+          throw new Error("Could not send inquiry. Try email instead.");
+        }
+      }
 
       if (!response.ok) {
-        throw new Error(result.error || "Something went wrong.");
+        throw new Error(result.error || "Could not send inquiry. Try email instead.");
       }
 
       setStatus("success");

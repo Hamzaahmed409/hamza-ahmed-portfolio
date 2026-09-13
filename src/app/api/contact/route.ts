@@ -42,21 +42,16 @@ export async function POST(request: Request) {
   if (isMailConfigured()) {
     try {
       await sendInquiryEmail(payload);
+      return NextResponse.json({
+        ok: true,
+        delivery: "resend",
+      });
     } catch (error) {
       console.error(
-        "Resend SMTP send failed:",
+        "Resend send failed:",
         error instanceof Error ? error.message : error,
       );
-      return NextResponse.json(
-        { error: "Could not send inquiry. Try email instead." },
-        { status: 502 },
-      );
     }
-
-    return NextResponse.json({
-      ok: true,
-      delivery: "resend-smtp",
-    });
   }
 
   const saved = await saveLocalInquiry(payload);
@@ -65,7 +60,6 @@ export async function POST(request: Request) {
     ok: true,
     delivery: "local",
     id: saved.id,
-    note: "Saved locally. Add RESEND_API_KEY to send inquiries by email.",
   });
 }
 
@@ -74,7 +68,7 @@ export async function GET() {
   const localCount = await countLocalInquiries();
 
   return NextResponse.json({
-    backend: configured ? "resend-smtp" : "local-json",
+    backend: configured ? "resend" : "local-json",
     mailConfigured: configured,
     localInquiryCount: localCount,
   });
