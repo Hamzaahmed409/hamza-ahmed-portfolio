@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { profile } from "@/content/profile";
+import { composeEmailHref, profile } from "@/content/profile";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -100,7 +100,9 @@ export function ContactForm() {
           {status === "loading" ? "Sending…" : "Send inquiry"}
         </Button>
         <a
-          href={`mailto:${profile.email}`}
+          href={composeEmailHref()}
+          target="_blank"
+          rel="noreferrer"
           className="text-sm text-white/55 underline-offset-4 transition hover:text-white hover:underline"
         >
           or email {profile.email}

@@ -463,3 +463,7 @@ export const profile = {
 };
 
 export const flatStack = profile.stackGroups.flatMap((group) => group.items);
+
+export function composeEmailHref(email = profile.email) {
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
+}

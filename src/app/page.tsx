@@ -4,7 +4,7 @@ import { PhoneStage } from "@/components/phone-stage";
 import { ContactForm } from "@/components/contact-form";
 import { WorkSection } from "@/components/work-section";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { profile } from "@/content/profile";
+import { composeEmailHref, profile } from "@/content/profile";
 import { backend } from "@/content/backend";
 
 export default function Home() {
@@ -41,7 +41,7 @@ export default function Home() {
             </a>
             <ThemeToggle />
             <Button
-              render={<a href={`mailto:${profile.email}`} />}
+              render={<a href="#contact" />}
               className="h-10 rounded-full px-4 text-sm shadow-sm shadow-sea/20"
             >
               Hire me
@@ -70,7 +70,13 @@ export default function Home() {
               </p>
               <div className="animate-rise-delay-3 mt-9 flex flex-wrap items-center gap-3">
                 <Button
-                  render={<a href={`mailto:${profile.email}`} />}
+                  render={
+                    <a
+                      href={composeEmailHref()}
+                      target="_blank"
+                      rel="noreferrer"
+                    />
+                  }
                   size="lg"
                   className="h-12 rounded-full px-6 text-sm shadow-md shadow-sea/25"
                 >
