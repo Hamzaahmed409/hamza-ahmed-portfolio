@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getSupabase, isSupabaseConfigured } from "@/lib/supabase";
+import { isMailConfigured, sendInquiryEmail } from "@/lib/email";
 import { countLocalInquiries, saveLocalInquiry } from "@/lib/local-store";
 
 type InquiryBody = {
@@ -39,22 +39,23 @@ export async function POST(request: Request) {
     created_at: new Date().toISOString(),
   };
 
-  const supabase = getSupabase();
-
-  if (supabase) {
-    const { error } = await supabase.from("inquiries").insert(payload);
-
-    if (error) {
-      console.error("Supabase insert failed:", error.message);
+  if (isMailConfigured()) {
+    try {
+      await sendInquiryEmail(payload);
+    } catch (error) {
+      console.error(
+        "Resend SMTP send failed:",
+        error instanceof Error ? error.message : error,
+      );
       return NextResponse.json(
-        { error: "Could not save inquiry. Try email instead." },
+        { error: "Could not send inquiry. Try email instead." },
         { status: 502 },
       );
     }
 
     return NextResponse.json({
       ok: true,
-      storage: "supabase-postgres",
+      delivery: "resend-smtp",
     });
   }
 
@@ -62,22 +63,19 @@ export async function POST(request: Request) {
 
   return NextResponse.json({
     ok: true,
-    storage: "local",
+    delivery: "local",
     id: saved.id,
-    note: isSupabaseConfigured()
-      ? undefined
-      : "Saved locally. Add NEXT_PUBLIC_SUPABASE_URL + NEXT_PUBLIC_SUPABASE_ANON_KEY to persist in Supabase PostgreSQL.",
+    note: "Saved locally. Add RESEND_API_KEY to send inquiries by email.",
   });
 }
 
 export async function GET() {
-  const configured = isSupabaseConfigured();
+  const configured = isMailConfigured();
   const localCount = await countLocalInquiries();
 
   return NextResponse.json({
-    backend: configured ? "supabase-postgres" : "local-json",
-    supabaseConfigured: configured,
+    backend: configured ? "resend-smtp" : "local-json",
+    mailConfigured: configured,
     localInquiryCount: localCount,
-    table: "inquiries",
   });
 }

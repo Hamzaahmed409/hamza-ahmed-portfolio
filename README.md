@@ -19,20 +19,22 @@ Use Behance/Dribbble only as a supporting gallery if you do heavy UI work. Do no
 - **Outlaws Roofing** — Knockio white-label
 - **TalkGenie AI** — AI customer-support chatbot
 
-## Supabase / PostgreSQL contact form
+## Resend contact form
 
-The contact form posts to `/api/contact`.
+The contact form posts to `/api/contact` and emails you via [Resend](https://resend.com) (`smtp.resend.com`).
 
-1. Create a Supabase project
-2. Run `supabase/inquiries.sql` in the SQL editor
-3. Copy `.env.example` → `.env.local` and set:
+1. Create an API key at [resend.com/api-keys](https://resend.com/api-keys) (it starts with `re_`)
+2. Copy `.env.example` → `.env.local` and set:
 
 ```bash
-NEXT_PUBLIC_SUPABASE_URL=...
-NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+RESEND_API_KEY=re_xxxxxxxx
+RESEND_FROM_EMAIL=Hamza Ahmed <beth.t@example.com>
+CONTACT_TO_EMAIL=you@example.com
 ```
 
-Without those keys the API still works in **mock mode** (logs the inquiry locally).
+`beth.t@example.com` works for testing and can only deliver to the email on your Resend account. For production, verify a domain at [resend.com/domains](https://resend.com/domains) and use `you@yourdomain.com` as `RESEND_FROM_EMAIL`.
+
+Without `RESEND_API_KEY` the API still works in **mock mode** (saves the inquiry locally).
 
 ## Theme & SEO
 
@@ -78,8 +80,9 @@ Create a GitHub repo for this project (from Cursor: **Create repo**), then push 
 | Name | Value |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Your live URL after first deploy, e.g. `https://your-project.vercel.app` (update again if you add a custom domain) |
-| `NEXT_PUBLIC_SUPABASE_URL` | Only if you use Supabase for the contact form |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Only if you use Supabase |
+| `RESEND_API_KEY` | Resend API key for the contact form |
+| `RESEND_FROM_EMAIL` | From address (use `beth.t@example.com` until a domain is verified) |
+| `CONTACT_TO_EMAIL` | Inbox that should receive inquiries |
 
 6. Click **Deploy**
 
