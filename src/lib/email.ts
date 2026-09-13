@@ -1,8 +1,12 @@
 import { Resend } from "resend";
 import { profile } from "@/content/profile";
 
+function env(name: string, fallback: string) {
+  return (process.env[name] ?? fallback).trim().replace(/^["']|["']$/g, "");
+}
+
 export function isMailConfigured() {
-  return (process.env.RESEND_API_KEY ?? "").trim().startsWith("re_");
+  return env("RESEND_API_KEY", "").startsWith("re_");
 }
 
 function escapeHtml(value: string) {
@@ -19,15 +23,14 @@ export async function sendInquiryEmail(inquiry: {
   company: string | null;
   message: string;
 }) {
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = env("RESEND_API_KEY", "");
 
-  if (!apiKey) {
+  if (!apiKey.startsWith("re_")) {
     throw new Error("RESEND_API_KEY is not set.");
   }
 
-  const to = process.env.CONTACT_TO_EMAIL ?? profile.email;
-  const from =
-    process.env.RESEND_FROM_EMAIL ?? "Portfolio <beth.t@example.com>";
+  const to = env("CONTACT_TO_EMAIL", profile.email);
+  const from = env("RESEND_FROM_EMAIL", "beth.t@example.com");
   const company = inquiry.company ?? "—";
 
   const resend = new Resend(apiKey);
@@ -44,12 +47,12 @@ export async function sendInquiryEmail(inquiry: {
       inquiry.message,
     ].join("\n"),
     html: `
-      <div style="font-family: -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif; line-height: 1.6; color: #111;">
-        <h2 style="margin: 0 0 16px;">New portfolio inquiry</h2>
+      <div style="font-family: sans-serif; line-height: 1.6; color: #111;">
+        <h2>New portfolio inquiry</h2>
         <p><strong>Name:</strong> ${escapeHtml(inquiry.name)}</p>
         <p><strong>Email:</strong> ${escapeHtml(inquiry.email)}</p>
         <p><strong>Company:</strong> ${escapeHtml(company)}</p>
-        <p style="white-space: pre-wrap; margin-top: 20px;">${escapeHtml(inquiry.message)}</p>
+        <p style="white-space: pre-wrap;">${escapeHtml(inquiry.message)}</p>
       </div>
     `,
   });

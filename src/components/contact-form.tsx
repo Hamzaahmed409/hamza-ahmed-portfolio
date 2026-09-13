@@ -31,14 +31,15 @@ export function ContactForm() {
       });
 
       const text = await response.text();
-      let result: { error?: string } = {};
+      if (!text) {
+        throw new Error("Could not send inquiry. Try email instead.");
+      }
 
-      if (text) {
-        try {
-          result = JSON.parse(text) as { error?: string };
-        } catch {
-          throw new Error("Could not send inquiry. Try email instead.");
-        }
+      let result: { error?: string } = {};
+      try {
+        result = JSON.parse(text) as { error?: string };
+      } catch {
+        throw new Error("Could not send inquiry. Try email instead.");
       }
 
       if (!response.ok) {
