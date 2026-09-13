@@ -1,0 +1,437 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-display);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-mist: var(--mist);
+  --color-sea: var(--sea);
+  --color-foam: var(--foam);
+  --color-sand: var(--sand);
+  --color-deep: var(--deep);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #f3f6f4;
+  --foreground: #14201c;
+  --ink: #0c1612;
+  --mist: #d8e4de;
+  --sea: #0d6b5c;
+  --foam: #7ddec8;
+  --sand: #e8efe9;
+  --deep: #0c1612;
+  --card: #fafcfb;
+  --card-foreground: #14201c;
+  --popover: #fafcfb;
+  --popover-foreground: #14201c;
+  --primary: #0d6b5c;
+  --primary-foreground: #f0fdfa;
+  --secondary: #dde8e3;
+  --secondary-foreground: #14201c;
+  --muted: #e4ece7;
+  --muted-foreground: #52635c;
+  --accent: #cfe8e0;
+  --accent-foreground: #0a3d34;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #c5d4cc;
+  --input: #c5d4cc;
+  --ring: #0d6b5c;
+  --chart-1: #0d6b5c;
+  --chart-2: #1d4ed8;
+  --chart-3: #b45309;
+  --chart-4: #334155;
+  --chart-5: #64748b;
+  --radius: 0.85rem;
+  --sidebar: #fafcfb;
+  --sidebar-foreground: #14201c;
+  --sidebar-primary: #0d6b5c;
+  --sidebar-primary-foreground: #f0fdfa;
+  --sidebar-accent: #e4ece7;
+  --sidebar-accent-foreground: #14201c;
+  --sidebar-border: #c5d4cc;
+  --sidebar-ring: #0d6b5c;
+}
+
+.dark {
+  --background: #0b1210;
+  --foreground: #e7efea;
+  --ink: #eef6f2;
+  --mist: #1a2621;
+  --sea: #2dd4bf;
+  --foam: #5eead4;
+  --sand: #121a17;
+  --deep: #070c0a;
+  --card: #121a17;
+  --card-foreground: #e7efea;
+  --popover: #121a17;
+  --popover-foreground: #e7efea;
+  --primary: #2dd4bf;
+  --primary-foreground: #042f2e;
+  --secondary: #1a2621;
+  --secondary-foreground: #e7efea;
+  --muted: #16201c;
+  --muted-foreground: #9db0a7;
+  --accent: #1a3029;
+  --accent-foreground: #99f6e4;
+  --destructive: oklch(0.65 0.2 25);
+  --border: #24302b;
+  --input: #24302b;
+  --ring: #2dd4bf;
+  --chart-1: #2dd4bf;
+  --chart-2: #60a5fa;
+  --chart-3: #fbbf24;
+  --chart-4: #94a3b8;
+  --chart-5: #a78bfa;
+  --sidebar: #121a17;
+  --sidebar-foreground: #e7efea;
+  --sidebar-primary: #2dd4bf;
+  --sidebar-primary-foreground: #042f2e;
+  --sidebar-accent: #1a2621;
+  --sidebar-accent-foreground: #e7efea;
+  --sidebar-border: #24302b;
+  --sidebar-ring: #2dd4bf;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-color: var(--background);
+    background-image:
+      radial-gradient(ellipse 80% 55% at 8% -8%, rgba(125, 222, 200, 0.35), transparent 55%),
+      radial-gradient(ellipse 55% 45% at 92% 0%, rgba(14, 107, 92, 0.12), transparent 50%),
+      radial-gradient(ellipse 40% 30% at 70% 100%, rgba(200, 220, 210, 0.4), transparent 60%),
+      linear-gradient(180deg, #eef4f1 0%, #f3f6f4 45%, #f7faf8 100%);
+    background-attachment: fixed;
+  }
+  .dark body {
+    background-image:
+      radial-gradient(ellipse 80% 55% at 8% -8%, rgba(45, 212, 191, 0.14), transparent 55%),
+      radial-gradient(ellipse 55% 45% at 92% 0%, rgba(15, 118, 110, 0.18), transparent 50%),
+      radial-gradient(ellipse 40% 30% at 70% 100%, rgba(20, 40, 34, 0.7), transparent 60%),
+      linear-gradient(180deg, #0a100e 0%, #0b1210 45%, #0e1613 100%);
+  }
+  html {
+    @apply font-sans scroll-smooth;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .site-grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+    opacity: 0.035;
+  }
+  .shot-frame {
+    transition:
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.45s ease;
+  }
+  .shot-frame:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 28px 50px rgba(12, 22, 18, 0.22);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-phone {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(-3deg);
+  }
+}
+
+@keyframes float-phone-alt {
+  0%,
+  100% {
+    transform: translateY(0) rotate(7deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(14px, -10px, 0) scale(1.04);
+  }
+}
+
+@keyframes shimmer-line {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-rise-delay-1 {
+  animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.animate-rise-delay-2 {
+  animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+.animate-rise-delay-3 {
+  animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both;
+}
+
+.animate-float-phone {
+  animation: float-phone 7s ease-in-out infinite;
+}
+
+.animate-float-phone-alt {
+  animation: float-phone-alt 8.5s ease-in-out infinite;
+}
+
+.animate-drift {
+  animation: drift 11s ease-in-out infinite;
+}
+
+.animate-soft-pulse {
+  animation: soft-pulse 5s ease-in-out infinite;
+}
+
+@keyframes phone-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-30%) translateY(18px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-52%) translateY(0) scale(1);
+  }
+}
+
+@keyframes phone-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-74%) translateY(18px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-52%) translateY(0) scale(1);
+  }
+}
+
+@keyframes phone-side-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.94);
+  }
+  to {
+    opacity: 0.8;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes phone-label-fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes phone-dot-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes phone-stage-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(42px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes phone-stage-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-42px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.phone-slide-in-right-wrap {
+  animation: phone-stage-in-right 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.phone-slide-in-left-wrap {
+  animation: phone-stage-in-left 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.phone-slide-in-right {
+  animation: phone-in-right 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.phone-slide-in-left {
+  animation: phone-in-left 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.phone-slide-side {
+  animation: phone-side-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.phone-label-fade {
+  animation: phone-label-fade 0.4s ease both;
+}
+
+.phone-dot-progress {
+  animation: phone-dot-progress 2.8s linear both;
+}
+
+.hero-glow,
+.hero-glow {
+  background: linear-gradient(
+    115deg,
+    rgba(13, 107, 92, 0.2),
+    rgba(125, 222, 200, 0.18),
+    rgba(20, 32, 28, 0.06)
+  );
+  background-size: 200% 200%;
+  animation: shimmer-line 9s ease infinite;
+}
+
+.shot-frame,
+.shot-frame {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease;
+}
+
+.shot-frame:hover,
+.shot-frame:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 50px rgba(12, 22, 18, 0.22);
+}
+
+.animate-drift {
+  animation: drift 11s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-rise-delay-1,
+  .animate-rise-delay-2,
+  .animate-rise-delay-3,
+  .animate-float-phone,
+  .animate-float-phone-alt,
+  .animate-drift,
+  .animate-drift,
+  .animate-soft-pulse,
+  .hero-glow,
+  .hero-glow,
+  .phone-slide-in-right,
+  .phone-slide-in-left,
+  .phone-slide-in-right-wrap,
+  .phone-slide-in-left-wrap,
+  .phone-slide-side,
+  .phone-label-fade,
+  .phone-dot-progress {
+    animation: none !important;
+  }
+  .shot-frame:hover,
+  .shot-frame:hover {
+    transform: none;
+  }
+}
