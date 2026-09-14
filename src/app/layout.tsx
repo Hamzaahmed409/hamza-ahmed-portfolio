@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import { profile, flatStack } from "@/content/profile";
 import { JsonLd } from "@/components/json-ld";
+import { PwaInstall } from "@/components/pwa-install";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({
@@ -31,6 +32,22 @@ export const metadata: Metadata = {
   },
   description,
   applicationName: `${profile.name} Portfolio`,
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Hamza Ahmed",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/manifest.webmanifest",
   authors: [{ name: profile.name, url: siteUrl }],
   creator: profile.name,
   publisher: profile.name,
@@ -118,6 +135,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col font-body text-foreground">
         <JsonLd />
         {children}
+        <PwaInstall />
       </body>
     </html>
   );
