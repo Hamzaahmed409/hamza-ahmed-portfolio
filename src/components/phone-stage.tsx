@@ -84,23 +84,23 @@ export function PhoneStage() {
   }
 
   const current = apps[index];
-  // Only this app's screens — never mix neighboring projects on one slide.
-  const uniqueShots = [...new Set(current.screenshots)].slice(0, 2);
-  const main = uniqueShots[0];
-  const side = uniqueShots[1];
+  const shots = current.screenshots;
+  const main = shots[0];
+  const leftShot = shots[1] || shots[0];
+  const rightShot = shots[2] || shots[1] || shots[0];
 
   return (
     <div
-      className="relative mx-auto w-full max-w-[460px] cursor-grab select-none active:cursor-grabbing"
+      className="relative mx-auto w-full max-w-[460px] cursor-grab select-none active:cursor-grabbing px-2 sm:px-0"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="relative h-[430px] sm:h-[480px] w-full overflow-hidden">
-        <div className="animate-drift absolute inset-6 rounded-[45%] bg-[radial-gradient(circle_at_center,rgba(125,222,200,0.5),transparent_68%)] blur-2xl pointer-events-none" />
-        <div className="absolute inset-x-10 top-16 bottom-8 rounded-[2.5rem] border border-white/40 bg-white/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] backdrop-blur-[2px] dark:border-white/10 dark:bg-white/5 pointer-events-none" />
+      <div className="relative h-[420px] sm:h-[480px] w-full">
+        <div className="animate-drift absolute inset-4 rounded-[45%] bg-[radial-gradient(circle_at_center,rgba(125,222,200,0.5),transparent_68%)] blur-2xl pointer-events-none" />
+        <div className="absolute inset-x-6 top-16 bottom-8 rounded-[2.5rem] border border-white/40 bg-white/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] backdrop-blur-[2px] dark:border-white/10 dark:bg-white/5 pointer-events-none" />
 
         <div
           key={`stage-${current.slug}-${animKey}`}
@@ -108,28 +108,32 @@ export function PhoneStage() {
             dir >= 0 ? "phone-slide-in-right-wrap" : "phone-slide-in-left-wrap"
           }
         >
-          {side ? (
-            <div className="phone-slide-side absolute top-24 right-[2%] z-10 w-[165px] rotate-[8deg] opacity-80 sm:w-[190px]">
+          {leftShot ? (
+            <div className="phone-slide-side absolute top-20 left-1 sm:left-3 z-10 w-[125px] sm:w-[165px] -rotate-[8deg] opacity-75 sm:opacity-85">
               <DeviceShot
-                src={side}
-                alt={`${current.name} screenshot 2`}
+                src={leftShot}
+                alt={`${current.name} screenshot left`}
+                dim
+              />
+            </div>
+          ) : null}
+
+          {rightShot ? (
+            <div className="phone-slide-side absolute top-20 right-1 sm:right-3 z-10 w-[125px] sm:w-[165px] rotate-[8deg] opacity-75 sm:opacity-85">
+              <DeviceShot
+                src={rightShot}
+                alt={`${current.name} screenshot right`}
                 dim
               />
             </div>
           ) : null}
 
           {main ? (
-            <div
-              className={`absolute top-4 z-20 w-[205px] sm:w-[235px] ${
-                side
-                  ? "left-1/2 -translate-x-[58%]"
-                  : "left-1/2 -translate-x-1/2"
-              }`}
-            >
+            <div className="absolute top-2 left-1/2 -translate-x-1/2 z-20 w-[175px] sm:w-[215px]">
               <div className="animate-float-phone">
                 <DeviceShot
                   src={main}
-                  alt={`${current.name} screenshot`}
+                  alt={`${current.name} main screenshot`}
                   priority
                 />
               </div>
@@ -154,18 +158,18 @@ function DeviceShot({
 }) {
   return (
     <div
-      className={`relative overflow-hidden rounded-[2.1rem] border border-white/80 bg-[#0c1612] shadow-[0_28px_70px_rgba(12,22,18,0.4)] ring-1 ring-black/10 dark:border-white/20 ${
+      className={`relative overflow-hidden rounded-[1.8rem] sm:rounded-[2.1rem] border border-white/80 bg-[#0c1612] shadow-[0_20px_50px_rgba(12,22,18,0.35)] ring-1 ring-black/10 dark:border-white/20 ${
         dim ? "scale-[0.96]" : ""
       }`}
     >
-      <div className="mx-auto mt-3.5 h-[5px] w-20 rounded-full bg-white/15" />
-      <div className="relative m-2.5 aspect-[9/19.5] overflow-hidden rounded-[1.45rem] bg-ink">
+      <div className="mx-auto mt-2.5 sm:mt-3.5 h-[4px] sm:h-[5px] w-14 sm:w-20 rounded-full bg-white/15" />
+      <div className="relative m-2 sm:m-2.5 aspect-[9/19.5] overflow-hidden rounded-[1.25rem] sm:rounded-[1.45rem] bg-ink">
         <Image
           src={src}
           alt={alt}
           fill
           className="object-cover object-top"
-          sizes="240px"
+          sizes="(max-width: 640px) 180px, 240px"
           priority={priority}
         />
       </div>

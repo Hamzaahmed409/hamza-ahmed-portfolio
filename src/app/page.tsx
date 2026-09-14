@@ -54,21 +54,21 @@ export default function Home() {
         <section className="relative overflow-hidden">
           <div className="hero-glow pointer-events-none absolute inset-x-0 top-0 h-[78%] opacity-90" />
           <div className="pointer-events-none absolute -left-24 top-32 size-72 rounded-full bg-foam/30 blur-3xl animate-soft-pulse" />
-          <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pt-8 pb-10 sm:px-8 sm:pt-12 sm:pb-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8 lg:pt-12 lg:pb-12">
+          <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pt-12 pb-10 sm:px-8 sm:pt-16 sm:pb-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8 lg:pt-14 lg:pb-12">
             <div className="max-w-xl">
-              <p className="animate-rise mb-4 text-sm font-medium tracking-[0.18em] text-sea uppercase">
+              <p className="animate-rise mb-3.5 text-sm font-medium tracking-[0.18em] text-sea uppercase">
                 {profile.availability}
               </p>
               <h1 className="animate-rise-delay-1 font-display text-[clamp(2.8rem,9vw,5rem)] leading-[0.92] font-extrabold tracking-tight text-balance text-ink">
                 {profile.name}
               </h1>
-              <p className="animate-rise-delay-2 mt-5 font-display text-xl font-semibold text-sea sm:text-2xl">
+              <p className="animate-rise-delay-2 mt-2.5 font-display text-xl font-semibold text-sea sm:text-2xl">
                 {profile.role}
               </p>
-              <p className="animate-rise-delay-2 mt-5 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
+              <p className="animate-rise-delay-2 mt-3.5 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
                 {profile.tagline}
               </p>
-              <div className="animate-rise-delay-3 mt-9 flex flex-wrap items-center gap-3">
+              <div className="animate-rise-delay-3 mt-6 sm:mt-7 flex flex-wrap items-center gap-3">
                 <Button
                   render={
                     <a
@@ -78,7 +78,7 @@ export default function Home() {
                     />
                   }
                   size="lg"
-                  className="h-12 rounded-full px-6 text-sm shadow-md shadow-sea/25"
+                  className="h-11 sm:h-12 rounded-full px-5 sm:px-6 text-sm shadow-md shadow-sea/25"
                 >
                   <Mail className="size-4" />
                   Email for roles
@@ -93,13 +93,13 @@ export default function Home() {
                   }
                   variant="outline"
                   size="lg"
-                  className="h-12 rounded-full border-border/70 bg-card/70 px-6 text-sm backdrop-blur hover:border-sea/40 hover:text-sea"
+                  className="h-11 sm:h-12 rounded-full border-border/70 bg-card/70 px-5 sm:px-6 text-sm backdrop-blur hover:border-sea/40 hover:text-sea"
                 >
                   Download CV
                   <ArrowUpRight className="size-4" />
                 </Button>
               </div>
-              <div className="animate-rise-delay-3 mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+              <div className="animate-rise-delay-3 mt-7 sm:mt-8 flex flex-wrap items-center gap-x-6 gap-y-2.5 text-sm text-muted-foreground">
                 <span className="inline-flex items-center gap-2">
                   <MapPin className="size-3.5 shrink-0 text-sea" />
                   {profile.location}
@@ -147,7 +147,7 @@ export default function Home() {
           className="relative border-b border-border/50 bg-deep text-white"
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(13,107,92,0.35),transparent_55%)]" />
-          <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+          <div className="relative mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-20">
             <div className="max-w-2xl">
               <p className="text-sm font-semibold tracking-[0.16em] text-foam uppercase">
                 Experience
@@ -155,15 +155,15 @@ export default function Home() {
               <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
                 Where I’ve shipped
               </h2>
-              <p className="mt-3 text-white/60">
+              <p className="mt-2 text-white/60">
                 Leadership, Knockio ownership, and product delivery from the CV.
               </p>
             </div>
-            <div className="mt-12">
+            <div className="mt-6 divide-y divide-white/10 sm:mt-10">
               {profile.experience.map((job, i) => (
                 <article
                   key={`${job.company}-${job.period}`}
-                  className="grid gap-4 border-t border-white/10 py-8 sm:grid-cols-[180px_1fr] sm:gap-10"
+                  className="grid gap-4 py-6 sm:grid-cols-[180px_1fr] sm:gap-10 sm:py-8"
                 >
                   <div>
                     <p className="font-mono text-xs tracking-wider text-foam/80">

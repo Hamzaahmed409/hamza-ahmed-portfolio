@@ -114,42 +114,42 @@ function ProjectCard({
         }`}
       >
         <div className={index % 2 === 1 ? "lg:order-2" : undefined}>
-          <div className="flex flex-wrap items-start gap-4">
+          <div className="flex items-start gap-4">
             <Image
               src={project.icon}
               alt={`${project.name} app icon`}
               width={64}
               height={64}
-              className="rounded-[1.1rem] shadow-[0_10px_30px_rgba(12,22,18,0.12)] ring-1 ring-black/5"
+              className="size-14 sm:size-16 shrink-0 rounded-[1.1rem] shadow-[0_10px_30px_rgba(12,22,18,0.12)] ring-1 ring-black/5"
             />
             <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
-                <span className="font-mono text-xs tracking-wider text-sea">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span aria-hidden className="text-border">
-                  /
-                </span>
-                <span>Published {project.year}</span>
-                <span aria-hidden className="text-border">
-                  /
-                </span>
-                <span>{project.platform}</span>
-                {project.featured ? (
-                  <>
-                    <span aria-hidden className="text-border">
-                      /
-                    </span>
-                    <span className="font-semibold text-sea">Flagship</span>
-                  </>
-                ) : null}
-              </div>
-              <h3 className="mt-2 font-display text-2xl font-bold text-ink sm:text-3xl">
+              <h3 className="font-display text-2xl font-bold leading-tight text-ink sm:text-3xl">
                 {project.name}
               </h3>
               <p className="mt-1 text-sm text-muted-foreground">
                 {project.category}
               </p>
+              <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground sm:text-sm">
+                <span className="font-mono text-xs font-semibold tracking-wider text-sea">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span aria-hidden className="text-border">
+                  ·
+                </span>
+                <span>Published {project.year}</span>
+                <span aria-hidden className="text-border">
+                  ·
+                </span>
+                <span>{project.platform}</span>
+                {project.featured ? (
+                  <>
+                    <span aria-hidden className="text-border">
+                      ·
+                    </span>
+                    <span className="font-semibold text-sea">Flagship</span>
+                  </>
+                ) : null}
+              </div>
             </div>
           </div>
           <p
