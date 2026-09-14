@@ -149,7 +149,7 @@ export const profile = {
       points: [
         "Lead mobile architecture and manage a squad of 3 engineers within an 18-person agile team; oversee sprint delivery and code reviews.",
         "Architected Knockio (Core Flagship Product), an enterprise CRM & field-ops platform (React Native CLI) deployed nationwide.",
-        "Engineered real-time Twilio VoIP calling (iOS CallKit, Android Notifee/FCM), handling 500+ daily calls with 99.8% stability.",
+        "Engineered real-time Twilio VoIP calling (iOS CallKit, Android Notifee/FCM), handling 500+ daily calls.",
         "Built custom native bridges (Swift/Kotlin) for Mapbox turn-by-turn navigation, live GPS tracking, territory clustering, and route planning.",
         "Delivered a multi-tenant white-label theming engine, enabling instant branding and automated client deployments from a single codebase.",
         "Pioneered TDD adoption and Detox E2E test suites, reducing critical regression bugs by 45% and elevating release stability.",
@@ -159,7 +159,7 @@ export const profile = {
     {
       company: "Gotech",
       role: "Lead Mobile Engineer (Advisory & Delivery)",
-      period: "Apr 2024 – Present",
+      period: "May 2025 – Present",
       location: "Remote / Part-Time",
       points: [
         "Provide technical oversight, architectural direction, and code quality governance across mobile development teams.",
