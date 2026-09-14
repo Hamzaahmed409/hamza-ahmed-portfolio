@@ -196,7 +196,7 @@ function ProjectCard({
                   />
                 }
                 size="lg"
-                className="h-11 rounded-full bg-sea px-5 text-sm text-white hover:bg-sea/90"
+                className="h-11 rounded-full bg-sea px-5 text-sm text-white dark:text-[#042f2e] hover:bg-sea/90"
               >
                 App Store
                 <ArrowUpRight className="size-4" />
@@ -212,7 +212,7 @@ function ProjectCard({
                   />
                 }
                 size="lg"
-                className="h-11 rounded-full bg-ink px-5 text-sm text-white hover:bg-ink/90"
+                className="h-11 rounded-full bg-ink px-5 text-sm text-background dark:text-[#0b1210] hover:bg-ink/90"
               >
                 Play Store
                 <ArrowUpRight className="size-4" />

@@ -24,8 +24,9 @@ export function ThemeToggle() {
       : prefersDark
         ? "dark"
         : "light";
-    setTheme(next);
     applyTheme(next);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setTheme(next);
     setReady(true);
   }, []);
 

@@ -52,6 +52,28 @@ export const profile = {
     github: "https://github.com/",
     resume: "/Hamza_Ahmed_CV.pdf",
   },
+  impactStats: [
+    {
+      value: "11+",
+      label: "Store Apps",
+      detail: "App Store & Play Store shipped",
+    },
+    {
+      value: "6+",
+      label: "Years Experience",
+      detail: "React Native, Flutter & Next.js",
+    },
+    {
+      value: "Lead",
+      label: "Product Ownership",
+      detail: "Knockio CRM & White-labels",
+    },
+    {
+      value: "UTC+5",
+      label: "Remote Ready",
+      detail: "US / EU night shift overlap",
+    },
+  ],
   stackGroups: [
     {
       label: "Mobile",
@@ -257,9 +279,75 @@ export const profile = {
         "https://play.google.com/store/apps/details?id=ai.talkgenie.mobile&hl=en",
       icon: "/apps/talkgenie-ai-icon.jpg",
       screenshots: [
-        "/apps/talkgenie-ai-shot-1.jpg",
-        "/apps/talkgenie-ai-shot-2.jpg",
-        "/apps/talkgenie-ai-shot-3.jpg",
+        "/apps/talkgenie-shot-1.jpg",
+        "/apps/talkgenie-shot-2.jpg",
+        "/apps/talkgenie-shot-3.jpg",
+      ],
+    },
+    {
+      slug: "cruisimity",
+      name: "Cruisimity",
+      platform: "iOS",
+      year: "Jan 2026",
+      category: "Navigation",
+      group: "consumer",
+      summary:
+        "Driving-social navigation app with custom routes, trip tracking, nearby drivers, leaderboards, and in-app chat for solo or group cruises.",
+      impact: "Live on the App Store · Navigation",
+      stack: ["iOS", "Maps & Navigation", "Realtime chat"],
+      accent: "#0D9488",
+      storeUrl: "https://apps.apple.com/us/app/cruisimity/id6744337395",
+      icon: "/apps/cruisimity-icon.jpg",
+      screenshots: [
+        "/apps/cruisimity-shot-1.jpg",
+        "/apps/cruisimity-shot-2.jpg",
+        "/apps/cruisimity-shot-3.jpg",
+      ],
+    },
+    {
+      slug: "wedstimate-wedding-vendors",
+      name: "Wedstimate Wedding Vendors",
+      platform: "iOS · Android",
+      year: "Jan 2025",
+      category: "Lifestyle",
+      group: "consumer",
+      summary:
+        "Wedding vendor matching with upfront pricing, budget tracking, direct messaging, and exclusive deals — less scrolling, clearer costs.",
+      impact: "4.8★ on App Store · Live on Play Store",
+      stack: ["iOS", "Android", "Firebase", "In-app purchases"],
+      accent: "#BE185D",
+      storeUrl:
+        "https://apps.apple.com/us/app/wedstimate-wedding-vendors/id6712045315",
+      playStoreUrl:
+        "https://play.google.com/store/apps/details?id=com.wedstimatemobileapp&hl=en",
+      icon: "/apps/wedstimate-wedding-vendors-icon.jpg",
+      screenshots: [
+        "/apps/wedstimate-wedding-vendors-shot-1.jpg",
+        "/apps/wedstimate-wedding-vendors-shot-2.jpg",
+        "/apps/wedstimate-wedding-vendors-shot-3.jpg",
+      ],
+    },
+    {
+      slug: "organic-produce-finder",
+      name: "Organic Produce Finder",
+      platform: "iOS · Android",
+      year: "Jun 2025",
+      category: "Business",
+      group: "consumer",
+      summary:
+        "Marketplace connecting shoppers with local organic vendors and backyard growers — listings, product uploads, and direct messaging.",
+      impact: "5.0★ on App Store · Live on Play Store",
+      stack: ["iOS", "Android", "Marketplace", "Messaging"],
+      accent: "#15803D",
+      storeUrl:
+        "https://apps.apple.com/us/app/organic-produce-finder/id6742911565",
+      playStoreUrl:
+        "https://play.google.com/store/apps/details?id=com.organicproduce.co&hl=en",
+      icon: "/apps/organic-produce-finder-icon.jpg",
+      screenshots: [
+        "/apps/organic-produce-finder-shot-1.jpg",
+        "/apps/organic-produce-finder-shot-2.jpg",
+        "/apps/organic-produce-finder-shot-3.jpg",
       ],
     },
     {
@@ -323,72 +411,6 @@ export const profile = {
         "/apps/ivy-online-shot-1.jpg",
         "/apps/ivy-online-shot-2.jpg",
         "/apps/ivy-online-shot-3.jpg",
-      ],
-    },
-    {
-      slug: "organic-produce-finder",
-      name: "Organic Produce Finder",
-      platform: "iOS · Android",
-      year: "Jun 2025",
-      category: "Business",
-      group: "consumer",
-      summary:
-        "Marketplace connecting shoppers with local organic vendors and backyard growers — listings, product uploads, and direct messaging.",
-      impact: "5.0★ on App Store · Live on Play Store",
-      stack: ["iOS", "Android", "Marketplace", "Messaging"],
-      accent: "#15803D",
-      storeUrl:
-        "https://apps.apple.com/us/app/organic-produce-finder/id6742911565",
-      playStoreUrl:
-        "https://play.google.com/store/apps/details?id=com.organicproduce.co&hl=en",
-      icon: "/apps/organic-produce-finder-icon.jpg",
-      screenshots: [
-        "/apps/organic-produce-finder-shot-1.jpg",
-        "/apps/organic-produce-finder-shot-2.jpg",
-        "/apps/organic-produce-finder-shot-3.jpg",
-      ],
-    },
-    {
-      slug: "cruisimity",
-      name: "Cruisimity",
-      platform: "iOS",
-      year: "Jan 2026",
-      category: "Navigation",
-      group: "consumer",
-      summary:
-        "Driving-social navigation app with custom routes, trip tracking, nearby drivers, leaderboards, and in-app chat for solo or group cruises.",
-      impact: "Live on the App Store · Navigation",
-      stack: ["iOS", "Maps & Navigation", "Realtime chat"],
-      accent: "#0D9488",
-      storeUrl: "https://apps.apple.com/us/app/cruisimity/id6744337395",
-      icon: "/apps/cruisimity-icon.jpg",
-      screenshots: [
-        "/apps/cruisimity-shot-1.jpg",
-        "/apps/cruisimity-shot-2.jpg",
-        "/apps/cruisimity-shot-3.jpg",
-      ],
-    },
-    {
-      slug: "wedstimate-wedding-vendors",
-      name: "Wedstimate Wedding Vendors",
-      platform: "iOS · Android",
-      year: "Jan 2025",
-      category: "Lifestyle",
-      group: "consumer",
-      summary:
-        "Wedding vendor matching with upfront pricing, budget tracking, direct messaging, and exclusive deals — less scrolling, clearer costs.",
-      impact: "4.8★ on App Store · Live on Play Store",
-      stack: ["iOS", "Android", "Firebase", "In-app purchases"],
-      accent: "#BE185D",
-      storeUrl:
-        "https://apps.apple.com/us/app/wedstimate-wedding-vendors/id6712045315",
-      playStoreUrl:
-        "https://play.google.com/store/apps/details?id=com.wedstimatemobileapp&hl=en",
-      icon: "/apps/wedstimate-wedding-vendors-icon.jpg",
-      screenshots: [
-        "/apps/wedstimate-wedding-vendors-shot-1.jpg",
-        "/apps/wedstimate-wedding-vendors-shot-2.jpg",
-        "/apps/wedstimate-wedding-vendors-shot-3.jpg",
       ],
     },
     {

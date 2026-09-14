@@ -54,7 +54,7 @@ export default function Home() {
         <section className="relative overflow-hidden">
           <div className="hero-glow pointer-events-none absolute inset-x-0 top-0 h-[78%] opacity-90" />
           <div className="pointer-events-none absolute -left-24 top-32 size-72 rounded-full bg-foam/30 blur-3xl animate-soft-pulse" />
-          <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-10 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-6 lg:pb-28 lg:pt-14">
+          <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pt-8 pb-10 sm:px-8 sm:pt-12 sm:pb-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8 lg:pt-12 lg:pb-12">
             <div className="max-w-xl">
               <p className="animate-rise mb-4 text-sm font-medium tracking-[0.18em] text-sea uppercase">
                 {profile.availability}
@@ -93,7 +93,7 @@ export default function Home() {
                   }
                   variant="outline"
                   size="lg"
-                  className="h-12 rounded-full border-border/70 bg-white/70 px-6 text-sm backdrop-blur"
+                  className="h-12 rounded-full border-border/70 bg-card/70 px-6 text-sm backdrop-blur hover:border-sea/40 hover:text-sea"
                 >
                   Download CV
                   <ArrowUpRight className="size-4" />
@@ -119,9 +119,32 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="relative z-10 border-y border-border/60 bg-card/70 backdrop-blur-md">
+          <div className="mx-auto max-w-6xl px-5 py-6 sm:px-8 sm:py-8">
+            <div className="grid grid-cols-2 gap-y-6 gap-x-4 sm:grid-cols-4 sm:gap-6 sm:divide-x sm:divide-border/60">
+              {profile.impactStats.map((stat, i) => (
+                <div
+                  key={stat.label}
+                  className={i > 0 ? "sm:pl-6 lg:pl-8" : ""}
+                >
+                  <p className="font-display text-2xl font-bold tracking-tight text-sea sm:text-3xl lg:text-4xl">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1 text-sm font-semibold text-ink">
+                    {stat.label}
+                  </p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">
+                    {stat.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section
           id="experience"
-          className="relative border-y border-border/50 bg-deep text-white"
+          className="relative border-b border-border/50 bg-deep text-white"
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(13,107,92,0.35),transparent_55%)]" />
           <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">

@@ -105,7 +105,7 @@ export function ContactForm() {
         <Button
           type="submit"
           disabled={status === "loading"}
-          className="h-12 rounded-full bg-foam px-6 text-ink hover:bg-foam/90 disabled:opacity-60"
+          className="h-12 rounded-full bg-foam px-6 text-deep font-semibold hover:bg-foam/90 disabled:opacity-60"
         >
           {status === "loading" ? "Sending…" : "Send inquiry"}
         </Button>

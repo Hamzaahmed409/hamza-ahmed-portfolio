@@ -1,30 +1,87 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { profile } from "@/content/profile";
 
-const APP_INTERVAL_MS = 3500;
+const APP_INTERVAL_MS = 2000;
+const SWIPE_THRESHOLD_PX = 40;
 
 export function PhoneStage() {
   const apps = profile.projects;
   const total = apps.length;
   const [index, setIndex] = useState(0);
   const [dir, setDir] = useState<1 | -1>(1);
-  const [tick, setTick] = useState(0);
+  const [animKey, setAnimKey] = useState(0);
 
-  const [paused, setPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+  const isDragging = useRef(false);
+
+  const goNext = useCallback(() => {
+    setDir(1);
+    setIndex((curr) => (curr + 1) % total);
+    setAnimKey((k) => k + 1);
+  }, [total]);
+
+  const goPrev = useCallback(() => {
+    setDir(-1);
+    setIndex((curr) => (curr - 1 + total) % total);
+    setAnimKey((k) => k + 1);
+  }, [total]);
 
   useEffect(() => {
-    if (total < 2 || paused) return;
-    const id = window.setInterval(() => {
-      setDir(1);
-      setIndex((current) => (current + 1) % total);
-      setTick((t) => t + 1);
-    }, APP_INTERVAL_MS);
-    return () => window.clearInterval(id);
-  }, [total, tick, paused]);
+    if (total < 2) return;
+    const timer = setInterval(goNext, APP_INTERVAL_MS);
+    return () => clearInterval(timer);
+  }, [total, animKey, goNext]);
+
+  // Mobile touch gestures
+  function handleTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  }
+
+  function handleTouchEnd(e: React.TouchEvent) {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+    const diffX = e.changedTouches[0].clientX - touchStartX.current;
+    const diffY = e.changedTouches[0].clientY - touchStartY.current;
+
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > SWIPE_THRESHOLD_PX) {
+      if (diffX < 0) {
+        goNext();
+      } else {
+        goPrev();
+      }
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+  }
+
+  // Desktop mouse drag gestures
+  function handleMouseDown(e: React.MouseEvent) {
+    touchStartX.current = e.clientX;
+    isDragging.current = true;
+  }
+
+  function handleMouseUp(e: React.MouseEvent) {
+    if (!isDragging.current || touchStartX.current === null) return;
+    const diffX = e.clientX - touchStartX.current;
+    if (Math.abs(diffX) > SWIPE_THRESHOLD_PX) {
+      if (diffX < 0) {
+        goNext();
+      } else {
+        goPrev();
+      }
+    }
+    isDragging.current = false;
+    touchStartX.current = null;
+  }
+
+  function handleMouseLeave() {
+    isDragging.current = false;
+    touchStartX.current = null;
+  }
 
   const current = apps[index];
   // Only this app's screens — never mix neighboring projects on one slide.
@@ -32,30 +89,21 @@ export function PhoneStage() {
   const main = uniqueShots[0];
   const side = uniqueShots[1];
 
-  function go(delta: number) {
-    setDir(delta >= 0 ? 1 : -1);
-    setIndex((current) => (current + delta + total) % total);
-    setTick((t) => t + 1);
-  }
-
   return (
     <div
-      className="relative mx-auto w-full max-w-[460px]"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
-      onBlurCapture={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
-          setPaused(false);
-        }
-      }}
+      className="relative mx-auto w-full max-w-[460px] cursor-grab select-none active:cursor-grabbing"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseLeave}
     >
-      <div className="relative h-[min(68vh,600px)] w-full overflow-hidden">
-        <div className="animate-drift absolute inset-6 rounded-[45%] bg-[radial-gradient(circle_at_center,rgba(125,222,200,0.5),transparent_68%)] blur-2xl" />
-        <div className="absolute inset-x-10 top-16 bottom-8 rounded-[2.5rem] border border-white/40 bg-white/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] backdrop-blur-[2px] dark:border-white/10 dark:bg-white/5" />
+      <div className="relative h-[430px] sm:h-[480px] w-full overflow-hidden">
+        <div className="animate-drift absolute inset-6 rounded-[45%] bg-[radial-gradient(circle_at_center,rgba(125,222,200,0.5),transparent_68%)] blur-2xl pointer-events-none" />
+        <div className="absolute inset-x-10 top-16 bottom-8 rounded-[2.5rem] border border-white/40 bg-white/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] backdrop-blur-[2px] dark:border-white/10 dark:bg-white/5 pointer-events-none" />
 
         <div
-          key={`stage-${current.slug}-${tick}`}
+          key={`stage-${current.slug}-${animKey}`}
           className={
             dir >= 0 ? "phone-slide-in-right-wrap" : "phone-slide-in-left-wrap"
           }
@@ -87,64 +135,6 @@ export function PhoneStage() {
               </div>
             </div>
           ) : null}
-        </div>
-      </div>
-
-      <div className="mt-2 flex flex-col items-center gap-3">
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            aria-label="Previous app"
-            onClick={() => go(-1)}
-            className="inline-flex size-9 items-center justify-center rounded-full border border-border/70 bg-card/80 text-foreground transition hover:border-sea/40 hover:text-sea"
-          >
-            <ChevronLeft className="size-4" />
-          </button>
-          <a
-            href={`#${current.slug}`}
-            key={`label-${current.slug}-${tick}`}
-            className="phone-label-fade min-w-[10rem] text-center text-sm font-semibold text-ink transition hover:text-sea"
-          >
-            {current.name}
-            <span className="mt-0.5 block font-mono text-[0.65rem] font-medium tracking-wider text-muted-foreground uppercase">
-              {String(index + 1).padStart(2, "0")} /{" "}
-              {String(total).padStart(2, "0")}
-            </span>
-          </a>
-          <button
-            type="button"
-            aria-label="Next app"
-            onClick={() => go(1)}
-            className="inline-flex size-9 items-center justify-center rounded-full border border-border/70 bg-card/80 text-foreground transition hover:border-sea/40 hover:text-sea"
-          >
-            <ChevronRight className="size-4" />
-          </button>
-        </div>
-
-        <div className="flex max-w-full flex-wrap justify-center gap-1.5 px-2">
-          {apps.map((app, i) => (
-            <button
-              key={app.slug}
-              type="button"
-              aria-label={`Show ${app.name}`}
-              aria-current={i === index}
-              onClick={() => {
-                setDir(i > index ? 1 : -1);
-                setIndex(i);
-                setTick((t) => t + 1);
-              }}
-              className={`relative h-1.5 overflow-hidden rounded-full transition-all ${
-                i === index ? "w-7 bg-sea/25" : "w-1.5 bg-border hover:bg-sea/50"
-              }`}
-            >
-              {i === index ? (
-                <span
-                  key={`progress-${tick}`}
-                  className="phone-dot-progress absolute inset-y-0 left-0 rounded-full bg-sea"
-                />
-              ) : null}
-            </button>
-          ))}
         </div>
       </div>
     </div>
