@@ -1,3 +1,14 @@
+export type Education = {
+  degree: string;
+  institution: string;
+  period: string;
+};
+
+export type Language = {
+  language: string;
+  level: string;
+};
+
 export type ProjectGroup =
   | "field-crm"
   | "ai"
@@ -42,13 +53,13 @@ export const profile = {
   name: "Hamza Ahmed",
   role: "Senior Mobile & Frontend Engineer",
   tagline:
-    "Senior Mobile & Frontend Engineer with 6+ years shipping production-grade React Native & React.js applications for distributed teams. Proven track record in white-label multi-tenant architecture, custom native bridges (Swift/Kotlin), VoIP/telephony (Twilio/CallKit), turn-by-turn navigation (Mapbox), and automated testing (TDD, Detox E2E). AI-First engineer leveraging Cursor, Claude, and OpenCode across US/EU time zones.",
+    "Senior Mobile & Frontend Engineer with 6+ years shipping production-grade React Native & React.js applications for distributed teams. Proven track record in white-label multi-tenant architecture, custom native bridges (Swift/Kotlin), VoIP/telephony (Twilio/CallKit), turn-by-turn navigation (Mapbox), and automated testing (TDD, Detox E2E). AI-First engineer leveraging Cursor, Claude, and OpenCode to accelerate scaffolding, test generation, and refactoring without sacrificing code quality. Experienced across US/EU time zones.",
   location: "Karachi, Pakistan · Open to Remote / US-EU Shifts",
-  email: "hamzaahmed4095@gmail.com",
+  email: "hamza_ahmed95@icloud.com",
   phone: "+92-307-015-9904",
   availability: "Open to Senior Mobile & Frontend Roles",
   links: {
-    linkedin: "https://linkedin.com/in/hamza-ahmed-49b783201",
+    linkedin: "https://linkedin.com/in/hamza-ahmed-9545s75",
     github: "https://github.com/HamzaAhmed4059",
     resume: "/Hamza_Ahmed_CV.pdf",
   },
@@ -92,10 +103,13 @@ export const profile = {
       items: [
         "React.js",
         "Next.js",
+        "Angular",
         "TypeScript",
         "JavaScript (ES6+)",
         "Redux Toolkit",
         "Zustand",
+        "HTML5",
+        "CSS3",
         "Tailwind CSS",
       ],
     },
@@ -107,6 +121,7 @@ export const profile = {
         "NestJS",
         "REST APIs",
         "GraphQL",
+        "SQL",
         "Supabase",
         "Firebase",
         "PostgreSQL",
@@ -176,6 +191,23 @@ export const profile = {
         "Developed cross-platform mobile apps (React Native / Expo) with Google Maps API integration for real-time geolocation and tracking.",
         "Optimized REST API consumption and local SQLite caching, cutting network latency and enhancing UI fluidity.",
       ],
+    },
+  ],
+  education: [
+    {
+      degree: "Bachelor of Science in Computer Science (BSCS)",
+      institution: "Iqra University, Karachi",
+      period: "2016 – 2020",
+    },
+  ],
+  languages: [
+    {
+      language: "English",
+      level: "Professional Working (Fluent Async / Technical)",
+    },
+    {
+      language: "Urdu",
+      level: "Native",
     },
   ],
   remoteSignals: [

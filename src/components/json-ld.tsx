@@ -23,10 +23,16 @@ export function JsonLd() {
       (url) => Boolean(url) && !url.endsWith("linkedin.com/in/") && !url.endsWith("github.com/"),
     ),
     knowsAbout: flatStack.slice(0, 16),
-    alumniOf: profile.experience.map((job) => ({
-      "@type": "Organization",
-      name: job.company,
-    })),
+    alumniOf: [
+      ...profile.education.map((edu) => ({
+        "@type": "EducationalOrganization",
+        name: edu.institution,
+      })),
+      ...profile.experience.map((job) => ({
+        "@type": "Organization",
+        name: job.company,
+      })),
+    ],
   };
 
   const website = {

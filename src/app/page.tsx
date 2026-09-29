@@ -198,6 +198,41 @@ export default function Home() {
                 </article>
               ))}
             </div>
+
+            <div className="mt-12 grid gap-6 border-t border-white/10 pt-10 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm">
+                <p className="font-mono text-xs tracking-wider text-foam/80 uppercase">
+                  Education
+                </p>
+                {profile.education.map((edu) => (
+                  <div key={edu.degree} className="mt-3">
+                    <h4 className="font-display text-lg font-semibold text-white">
+                      {edu.degree}
+                    </h4>
+                    <p className="mt-1 text-sm text-foam font-medium">
+                      {edu.institution}
+                    </p>
+                    <p className="mt-0.5 text-xs text-white/55">
+                      {edu.period}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm">
+                <p className="font-mono text-xs tracking-wider text-foam/80 uppercase">
+                  Languages
+                </p>
+                <div className="mt-3 space-y-2.5">
+                  {profile.languages.map((lang) => (
+                    <div key={lang.language} className="flex items-baseline justify-between text-sm">
+                      <span className="font-semibold text-white">{lang.language}</span>
+                      <span className="text-white/60 text-xs sm:text-sm">{lang.level}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
