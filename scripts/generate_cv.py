@@ -263,7 +263,34 @@ def generate_polished_master_resume(output_path=None):
 
     story.append(Spacer(1, 1.8))
 
-    # Role 3: SudoWare
+    # Role 3: Talkgenie AI
+    row_tg = [
+        [
+            Paragraph("<b>Mobile Application Developer</b> — <font color='#0369A1'><b>Talkgenie AI</b></font>", job_title),
+            Paragraph("Karachi &nbsp;|&nbsp; <b>Apr 2026 – Jun 2026</b>", job_meta)
+        ]
+    ]
+    t_rtg = Table(row_tg, colWidths=[4.4 * inch, 3.34 * inch])
+    t_rtg.setStyle(TableStyle([
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+        ('LEFTPADDING', (0,0), (-1,-1), 0),
+        ('RIGHTPADDING', (0,0), (-1,-1), 0),
+        ('TOPPADDING', (0,0), (-1,-1), 0.5),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 1.2),
+    ]))
+    story.append(t_rtg)
+
+    talkgenie_bullets = [
+        "Built and shipped <b>TalkGenie AI</b> while working at Akvateq — context-aware AI customer support chatbot app powered by LLMs & Supabase.",
+        "Handled the React Native app end-to-end, from architecture and UI development to release on the App Store and Play Store.",
+        "Integrated LLM responses into chat with conversational context; configured Supabase backend for real-time data, auth, and production stability."
+    ]
+    for b in talkgenie_bullets:
+        story.append(Paragraph(f"• {b}", bullet_style))
+
+    story.append(Spacer(1, 1.8))
+
+    # Role 4: SudoWare
     row3 = [
         [
             Paragraph("<b>Mobile App Developer (React Native)</b> — <font color='#0369A1'><b>SudoWare</b></font>", job_title),

@@ -183,6 +183,18 @@ export const profile = {
       ],
     },
     {
+      company: "Talkgenie AI",
+      role: "Mobile Application Developer",
+      period: "Apr 2026 – Jun 2026",
+      location: "Karachi · Hybrid",
+      points: [
+        "Built and shipped TalkGenie AI while working at Akvateq, a context-aware AI customer support chatbot mobile app powered by LLMs and Supabase.",
+        "Handled the React Native app end to end, from architecture and development to release on the App Store and Play Store.",
+        "Integrated LLM responses into the chat experience so the bot replies with context from the conversation.",
+        "Set up Supabase for backend and data. Ensured performance, stability, and production readiness across the app.",
+      ],
+    },
+    {
       company: "SudoWare",
       role: "Mobile App Developer (React Native)",
       period: "Nov 2020 – Dec 2021",
