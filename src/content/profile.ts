@@ -53,7 +53,7 @@ export const profile = {
   name: "Hamza Ahmed",
   role: "Senior Mobile & Frontend Engineer",
   tagline:
-    "Senior Mobile & Frontend Engineer with 6+ years shipping production-grade React Native & React.js applications for distributed teams. Proven track record in white-label multi-tenant architecture, custom native bridges (Swift/Kotlin), VoIP/telephony (Twilio/CallKit), turn-by-turn navigation (Mapbox), and automated testing (TDD, Detox E2E). AI-First engineer leveraging Cursor, Claude, and OpenCode to accelerate scaffolding, test generation, and refactoring without sacrificing code quality. Experienced across US/EU time zones.",
+    "Senior Mobile & Frontend Engineer with 5+ years shipping production-grade React Native & React.js applications for distributed teams. Proven track record in white-label multi-tenant architecture, custom native bridges (Swift/Kotlin), VoIP/telephony (Twilio/CallKit), turn-by-turn navigation (Mapbox), and automated testing (TDD, Detox E2E). AI-First engineer leveraging Cursor, Claude, and OpenCode to accelerate scaffolding, test generation, and refactoring without sacrificing code quality. Experienced across US/EU time zones.",
   location: "Karachi, Pakistan · Open to Remote / US-EU Shifts",
   email: "hamza_ahmed95@icloud.com",
   phone: "+92-307-015-9904",
@@ -70,7 +70,7 @@ export const profile = {
       detail: "App Store & Play Store shipped",
     },
     {
-      value: "6+",
+      value: "5+",
       label: "Years Experience",
       detail: "React Native, Flutter & Next.js",
     },

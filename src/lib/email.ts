@@ -30,7 +30,7 @@ export async function sendInquiryEmail(inquiry: {
   }
 
   const to = env("CONTACT_TO_EMAIL", profile.email);
-  const from = env("RESEND_FROM_EMAIL", "beth.t@example.com");
+  const from = env("RESEND_FROM_EMAIL", "Hamza Ahmed <onboarding@resend.dev>");
   const company = inquiry.company ?? "—";
 
   const resend = new Resend(apiKey);
