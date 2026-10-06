@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { ArrowUpRight, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Reveal } from "@/components/reveal";
 import {
   profile,
   workFilters,
@@ -25,7 +26,7 @@ export function WorkSection() {
       id="work"
       className="mx-auto max-w-6xl scroll-mt-24 px-5 py-16 sm:px-8 sm:py-24"
     >
-      <div className="max-w-2xl">
+      <Reveal className="max-w-2xl">
         <p className="text-sm font-semibold tracking-[0.16em] text-sea uppercase">
           Selected work
         </p>
@@ -35,59 +36,62 @@ export function WorkSection() {
         <p className="mt-3 text-muted-foreground">
           Filter by category — Field CRM, AI, consumer apps, tools, and more.
         </p>
-      </div>
+      </Reveal>
 
-      <div
-        className="mt-8 flex gap-2 overflow-x-auto pb-1"
-        role="tablist"
-        aria-label="Project categories"
-      >
-        {workFilters.map((filter) => {
-          const isActive = active === filter.id;
-          const count =
-            filter.id === "all"
-              ? profile.projects.length
-              : profile.projects.filter((p) => p.group === filter.id).length;
+      <Reveal delay={80}>
+        <div
+          className="mt-8 flex gap-2 overflow-x-auto pb-1"
+          role="tablist"
+          aria-label="Project categories"
+        >
+          {workFilters.map((filter) => {
+            const isActive = active === filter.id;
+            const count =
+              filter.id === "all"
+                ? profile.projects.length
+                : profile.projects.filter((p) => p.group === filter.id).length;
 
-          if (filter.id !== "all" && count === 0) return null;
+            if (filter.id !== "all" && count === 0) return null;
 
-          return (
-            <button
-              key={filter.id}
-              type="button"
-              role="tab"
-              aria-selected={isActive}
-              onClick={() => setActive(filter.id)}
-              className={`shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition ${
-                isActive
-                  ? "border-sea bg-sea text-white shadow-sm shadow-sea/25"
-                  : "border-border/70 bg-card/80 text-foreground hover:border-sea/40 hover:text-sea"
-              }`}
-            >
-              {filter.label}
-              <span
-                className={`ml-2 font-mono text-xs ${
-                  isActive ? "text-white/75" : "text-muted-foreground"
+            return (
+              <button
+                key={filter.id}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => setActive(filter.id)}
+                className={`shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition ${
+                  isActive
+                    ? "border-sea bg-sea text-white shadow-sm shadow-sea/25"
+                    : "border-border/70 bg-card/80 text-foreground hover:border-sea/40 hover:text-sea"
                 }`}
               >
-                {count}
-              </span>
-            </button>
-          );
-        })}
-      </div>
+                {filter.label}
+                <span
+                  className={`ml-2 font-mono text-xs ${
+                    isActive ? "text-white/75" : "text-muted-foreground"
+                  }`}
+                >
+                  {count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </Reveal>
 
       <div className="mt-12 space-y-16 sm:mt-14 sm:space-y-20">
         {projects.length === 0 ? (
           <p className="text-muted-foreground">No apps in this category yet.</p>
         ) : (
           projects.map((project, index) => (
-            <ProjectCard
-              key={project.slug}
-              project={project}
-              index={index}
-              showDivider={index < projects.length - 1}
-            />
+            <Reveal key={project.slug} delay={Math.min(index, 3) * 50}>
+              <ProjectCard
+                project={project}
+                index={index}
+                showDivider={index < projects.length - 1}
+              />
+            </Reveal>
           ))
         )}
       </div>
@@ -196,7 +200,7 @@ function ProjectCard({
                   />
                 }
                 size="lg"
-                className="h-11 rounded-full bg-sea px-5 text-sm text-white dark:text-[#042f2e] hover:bg-sea/90"
+                className="h-11 rounded-full bg-sea px-5 text-sm text-white dark:text-[#0a1628] hover:bg-sea/90"
               >
                 App Store
                 <ArrowUpRight className="size-4" />
@@ -212,7 +216,7 @@ function ProjectCard({
                   />
                 }
                 size="lg"
-                className="h-11 rounded-full bg-ink px-5 text-sm text-background dark:text-[#0b1210] hover:bg-ink/90"
+                className="h-11 rounded-full bg-ink px-5 text-sm text-background dark:text-[#070d18] hover:bg-ink/90"
               >
                 Play Store
                 <ArrowUpRight className="size-4" />

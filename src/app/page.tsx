@@ -3,7 +3,12 @@ import { Button } from "@/components/ui/button";
 import { PhoneStage } from "@/components/phone-stage";
 import { ContactForm } from "@/components/contact-form";
 import { WorkSection } from "@/components/work-section";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { ExperienceSection } from "@/components/experience-section";
+import { SiteHeader } from "@/components/site-header";
+import { StatCounter } from "@/components/stat-counter";
+import { HeroCanvasLazy } from "@/components/hero-canvas-lazy";
+import { Reveal } from "@/components/reveal";
+import { StackSection } from "@/components/stack-section";
 import { composeEmailHref, profile } from "@/content/profile";
 import { backend } from "@/content/backend";
 
@@ -12,49 +17,14 @@ export default function Home() {
     <div className="relative flex min-h-full flex-col">
       <div className="site-grain pointer-events-none fixed inset-0 z-[60]" />
 
-      <header className="sticky top-0 z-40 border-b border-border/40 bg-background/75 backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8">
-          <a
-            href="#"
-            className="font-display text-lg font-bold tracking-tight text-ink sm:text-xl"
-          >
-            {profile.name}
-          </a>
-          <nav className="flex items-center gap-1 sm:gap-2">
-            <a
-              href="#experience"
-              className="hidden rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition hover:bg-muted/70 hover:text-foreground sm:inline"
-            >
-              Experience
-            </a>
-            <a
-              href="#work"
-              className="hidden rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition hover:bg-muted/70 hover:text-foreground sm:inline"
-            >
-              Work
-            </a>
-            <a
-              href="#contact"
-              className="hidden rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition hover:bg-muted/70 hover:text-foreground md:inline"
-            >
-              Contact
-            </a>
-            <ThemeToggle />
-            <Button
-              render={<a href="#contact" />}
-              className="h-10 rounded-full px-4 text-sm shadow-sm shadow-sea/20"
-            >
-              Hire me
-            </Button>
-          </nav>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main className="flex-1">
         <section className="relative overflow-hidden">
-          <div className="hero-glow pointer-events-none absolute inset-x-0 top-0 h-[78%] opacity-90" />
-          <div className="pointer-events-none absolute -left-24 top-32 size-72 rounded-full bg-foam/30 blur-3xl animate-soft-pulse" />
-          <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pt-12 pb-10 sm:px-8 sm:pt-16 sm:pb-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8 lg:pt-14 lg:pb-12">
+          <HeroCanvasLazy />
+          <div className="hero-glow pointer-events-none absolute inset-x-0 top-0 z-[1] h-[78%] opacity-90" />
+          <div className="pointer-events-none absolute -left-24 top-32 z-[1] size-72 rounded-full bg-foam/30 blur-3xl animate-soft-pulse" />
+          <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-5 pt-12 pb-10 sm:px-8 sm:pt-16 sm:pb-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8 lg:pt-14 lg:pb-12">
             <div className="max-w-xl">
               <p className="animate-rise mb-3.5 text-sm font-medium tracking-[0.18em] text-sea uppercase">
                 {profile.availability}
@@ -123,12 +93,13 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 py-6 sm:px-8 sm:py-8">
             <div className="grid grid-cols-2 gap-y-6 gap-x-4 sm:grid-cols-4 sm:gap-6 sm:divide-x sm:divide-border/60">
               {profile.impactStats.map((stat, i) => (
-                <div
+                <Reveal
                   key={stat.label}
+                  delay={i * 80}
                   className={i > 0 ? "sm:pl-6 lg:pl-8" : ""}
                 >
                   <p className="font-display text-2xl font-bold tracking-tight text-sea sm:text-3xl lg:text-4xl">
-                    {stat.value}
+                    <StatCounter value={stat.value} />
                   </p>
                   <p className="mt-1 text-sm font-semibold text-ink">
                     {stat.label}
@@ -136,121 +107,29 @@ export default function Home() {
                   <p className="mt-0.5 text-xs text-muted-foreground">
                     {stat.detail}
                   </p>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
         </section>
 
-        <section
-          id="experience"
-          className="relative border-b border-border/50 bg-deep text-white"
-        >
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(13,107,92,0.35),transparent_55%)]" />
-          <div className="relative mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-20">
-            <div className="max-w-2xl">
-              <p className="text-sm font-semibold tracking-[0.16em] text-foam uppercase">
-                Experience
-              </p>
-              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
-                Where I’ve shipped
-              </h2>
-              <p className="mt-2 text-white/60">
-                Leadership, Knockio ownership, and product delivery from the CV.
-              </p>
-            </div>
-            <div className="mt-6 divide-y divide-white/10 sm:mt-10">
-              {profile.experience.map((job, i) => (
-                <article
-                  key={`${job.company}-${job.period}`}
-                  className="grid gap-4 py-6 sm:grid-cols-[180px_1fr] sm:gap-10 sm:py-8"
-                >
-                  <div>
-                    <p className="font-mono text-xs tracking-wider text-foam/80">
-                      {String(i + 1).padStart(2, "0")}
-                    </p>
-                    <p className="mt-2 text-sm text-white/55">
-                      {job.period}
-                      {job.location ? (
-                        <>
-                          <br />
-                          {job.location}
-                        </>
-                      ) : null}
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="font-display text-xl font-semibold sm:text-2xl">
-                      {job.role}
-                    </h3>
-                    <p className="mt-1 text-sm font-medium text-foam">
-                      {job.company}
-                    </p>
-                    <ul className="mt-5 space-y-2.5 text-sm leading-relaxed text-white/75 sm:text-base">
-                      {job.points.map((point) => (
-                        <li key={point} className="flex gap-3">
-                          <span className="mt-2.5 size-1 shrink-0 rounded-full bg-foam" />
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            <div className="mt-12 grid gap-6 border-t border-white/10 pt-10 sm:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm">
-                <p className="font-mono text-xs tracking-wider text-foam/80 uppercase">
-                  Education
-                </p>
-                {profile.education.map((edu) => (
-                  <div key={edu.degree} className="mt-3">
-                    <h4 className="font-display text-lg font-semibold text-white">
-                      {edu.degree}
-                    </h4>
-                    <p className="mt-1 text-sm text-foam font-medium">
-                      {edu.institution}
-                    </p>
-                    <p className="mt-0.5 text-xs text-white/55">
-                      {edu.period}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm">
-                <p className="font-mono text-xs tracking-wider text-foam/80 uppercase">
-                  Languages
-                </p>
-                <div className="mt-3 space-y-2.5">
-                  {profile.languages.map((lang) => (
-                    <div key={lang.language} className="flex items-baseline justify-between text-sm">
-                      <span className="font-semibold text-white">{lang.language}</span>
-                      <span className="text-white/60 text-xs sm:text-sm">{lang.level}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ExperienceSection />
 
         <WorkSection />
 
         <section className="border-y border-border/50 bg-sand/60 py-16 sm:py-24">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <div className="max-w-2xl">
+            <Reveal className="max-w-2xl">
               <p className="text-sm font-semibold tracking-[0.16em] text-sea uppercase">
                 How I work
               </p>
               <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
                 Beyond pretty UI
               </h2>
-            </div>
+            </Reveal>
             <div className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
               {profile.remoteSignals.map((item, i) => (
-                <div key={item.title}>
+                <Reveal key={item.title} delay={i * 90}>
                   <p className="font-mono text-xs tracking-wider text-sea/70">
                     {String(i + 1).padStart(2, "0")}
                   </p>
@@ -260,52 +139,20 @@ export default function Home() {
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
                     {item.body}
                   </p>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold tracking-[0.16em] text-sea uppercase">
-              Stack
-            </p>
-            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              Tools I use to ship
-            </h2>
-            <p className="mt-3 text-muted-foreground">
-              Grouped by how I use them day to day — mobile first, then web,
-              data, and release tooling.
-            </p>
-          </div>
-          <div className="mt-10 space-y-8">
-            {profile.stackGroups.map((group) => (
-              <div key={group.label}>
-                <p className="mb-3 font-mono text-xs tracking-[0.14em] text-sea uppercase">
-                  {group.label}
-                </p>
-                <ul className="flex flex-wrap gap-2.5">
-                  {group.items.map((item) => (
-                    <li
-                      key={item}
-                      className="rounded-full border border-border/70 bg-card px-4 py-2 text-sm font-medium text-foreground shadow-sm shadow-ink/5 transition hover:border-sea/50 hover:text-sea"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
+        <StackSection />
 
         <section
           id="backend"
           className="border-y border-border/50 bg-sand/50 py-16 backdrop-blur-sm sm:py-24"
         >
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <div className="max-w-2xl">
+            <Reveal className="max-w-2xl">
               <p className="text-sm font-semibold tracking-[0.16em] text-sea uppercase">
                 {backend.eyebrow}
               </p>
@@ -313,10 +160,10 @@ export default function Home() {
                 {backend.title}
               </h2>
               <p className="mt-3 text-muted-foreground">{backend.summary}</p>
-            </div>
+            </Reveal>
             <div className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
               {backend.points.map((item, i) => (
-                <div key={item.title}>
+                <Reveal key={item.title} delay={i * 90}>
                   <p className="font-mono text-xs tracking-wider text-sea/70">
                     {String(i + 1).padStart(2, "0")}
                   </p>
@@ -326,7 +173,7 @@ export default function Home() {
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
                     {item.body}
                   </p>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -339,7 +186,7 @@ export default function Home() {
           <div className="pointer-events-none absolute -right-20 -top-24 size-80 rounded-full bg-sea/35 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-28 left-0 size-72 rounded-full bg-foam/20 blur-3xl" />
           <div className="relative mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-            <div>
+            <Reveal>
               <p className="text-sm font-semibold tracking-[0.16em] text-foam uppercase">
                 Contact
               </p>
@@ -381,8 +228,10 @@ export default function Home() {
                   GitHub
                 </Button>
               </div>
-            </div>
-            <ContactForm />
+            </Reveal>
+            <Reveal delay={100}>
+              <ContactForm />
+            </Reveal>
           </div>
         </section>
       </main>

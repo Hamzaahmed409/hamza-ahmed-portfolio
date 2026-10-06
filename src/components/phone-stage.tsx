@@ -99,7 +99,7 @@ export function PhoneStage() {
       onMouseLeave={handleMouseLeave}
     >
       <div className="relative h-[420px] sm:h-[480px] w-full">
-        <div className="animate-drift absolute inset-4 rounded-[45%] bg-[radial-gradient(circle_at_center,rgba(125,222,200,0.5),transparent_68%)] blur-2xl pointer-events-none" />
+        <div className="animate-drift absolute inset-4 rounded-[45%] bg-[radial-gradient(circle_at_center,rgba(125,179,255,0.5),transparent_68%)] blur-2xl pointer-events-none" />
         <div className="absolute inset-x-6 top-16 bottom-8 rounded-[2.5rem] border border-white/40 bg-white/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] backdrop-blur-[2px] dark:border-white/10 dark:bg-white/5 pointer-events-none" />
 
         <div
@@ -158,7 +158,7 @@ function DeviceShot({
 }) {
   return (
     <div
-      className={`relative overflow-hidden rounded-[1.8rem] sm:rounded-[2.1rem] border border-white/80 bg-[#0c1612] shadow-[0_20px_50px_rgba(12,22,18,0.35)] ring-1 ring-black/10 dark:border-white/20 ${
+      className={`relative overflow-hidden rounded-[1.8rem] sm:rounded-[2.1rem] border border-white/80 bg-[#0a1628] shadow-[0_20px_50px_rgba(10,22,40,0.35)] ring-1 ring-black/10 dark:border-white/20 ${
         dim ? "scale-[0.96]" : ""
       }`}
     >

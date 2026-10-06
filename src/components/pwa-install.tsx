@@ -130,7 +130,7 @@ export function PwaInstall() {
             <button
               type="button"
               onClick={handleInstallClick}
-              className="rounded-full bg-sea px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-sea/90 dark:text-[#042f2e]"
+              className="rounded-full bg-sea px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-sea/90 dark:text-[#0a1628]"
             >
               Install
             </button>
@@ -198,7 +198,7 @@ export function PwaInstall() {
             <button
               type="button"
               onClick={() => setShowIOSModal(false)}
-              className="mt-6 w-full rounded-full bg-sea py-2.5 text-xs font-semibold text-white transition hover:bg-sea/90 dark:text-[#042f2e]"
+              className="mt-6 w-full rounded-full bg-sea py-2.5 text-xs font-semibold text-white transition hover:bg-sea/90 dark:text-[#0a1628]"
             >
               Got it
             </button>
