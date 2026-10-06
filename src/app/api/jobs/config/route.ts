@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getDiscordWebhookUrl, saveDiscordWebhookUrl, clearPostedJobs } from "@/lib/discord-store";
+import { assertJobsEnabled } from "@/lib/jobs-guard";
 
 export const runtime = "nodejs";
 
@@ -8,6 +9,9 @@ function json(data: unknown, status = 200) {
 }
 
 export async function GET() {
+  const blocked = assertJobsEnabled();
+  if (blocked) return blocked;
+
   try {
     const rawUrl = await getDiscordWebhookUrl();
     const isConfigured = rawUrl !== "";
@@ -36,6 +40,9 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  const blocked = assertJobsEnabled();
+  if (blocked) return blocked;
+
   try {
     let body: { webhookUrl?: string; clearHistory?: boolean };
     try {

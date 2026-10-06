@@ -20,8 +20,8 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
   "http://127.0.0.1:43123";
 
-const title = `${profile.name} · ${profile.role}`;
-const description = profile.tagline;
+const title = profile.seo?.title ?? `${profile.name} · ${profile.role}`;
+const description = profile.seo?.description ?? profile.tagline;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -53,10 +53,12 @@ export const metadata: Metadata = {
   keywords: [
     profile.name,
     "Senior Mobile Engineer",
+    "Senior Frontend Engineer",
     "React Native developer",
     "Flutter developer",
     "Next.js developer",
     "Knockio",
+    "white-label mobile apps",
     "remote mobile engineer",
     "iOS Android developer",
     "Detox E2E",
@@ -74,12 +76,21 @@ export const metadata: Metadata = {
     title,
     description,
     siteName: `${profile.name} Portfolio`,
+    images: [
+      {
+        url: "/icons/icon-512.png",
+        width: 512,
+        height: 512,
+        alt: `${profile.name} — ${profile.role}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
     creator: profile.name,
+    images: ["/icons/icon-512.png"],
   },
   robots: {
     index: true,
@@ -101,8 +112,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f1f5fb" },
-    { media: "(prefers-color-scheme: dark)", color: "#070d18" },
+    { media: "(prefers-color-scheme: light)", color: "#f2f5f9" },
+    { media: "(prefers-color-scheme: dark)", color: "#060b14" },
   ],
   colorScheme: "light dark",
   width: "device-width",

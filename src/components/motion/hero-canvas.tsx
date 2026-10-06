@@ -30,7 +30,7 @@ function Particles({ active }: { active: boolean }) {
     () =>
       new THREE.PointsMaterial({
         size: 0.045,
-        color: "#7db3ff",
+        color: "#7a9bc7",
         transparent: true,
         opacity: 0.55,
         sizeAttenuation: true,
@@ -114,15 +114,15 @@ function SoftOrbs({ active }: { active: boolean }) {
     <group ref={group}>
       <mesh position={[-2.2, 0.8, -2]}>
         <sphereGeometry args={[1.4, 32, 32]} />
-        <meshBasicMaterial color="#1d4ed8" transparent opacity={0.12} />
+        <meshBasicMaterial color="#1b3a6b" transparent opacity={0.12} />
       </mesh>
       <mesh position={[2.6, -0.6, -2.5]}>
         <sphereGeometry args={[1.1, 32, 32]} />
-        <meshBasicMaterial color="#60a5fa" transparent opacity={0.1} />
+        <meshBasicMaterial color="#8ba3c7" transparent opacity={0.1} />
       </mesh>
       <mesh position={[0.4, 1.4, -3]}>
         <sphereGeometry args={[0.7, 24, 24]} />
-        <meshBasicMaterial color="#93c5fd" transparent opacity={0.08} />
+        <meshBasicMaterial color="#a8bdd8" transparent opacity={0.08} />
       </mesh>
     </group>
   );

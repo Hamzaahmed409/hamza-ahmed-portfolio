@@ -86,7 +86,7 @@ export function SiteHeader() {
           className="group inline-flex shrink-0 items-center gap-2.5"
           aria-label="Home"
         >
-          <span className="header-logo-mark relative flex size-8 items-center justify-center overflow-hidden rounded-xl bg-sea text-[0.65rem] font-extrabold tracking-wide text-white shadow-[0_6px_16px_rgba(29,78,216,0.35)]">
+          <span className="header-logo-mark relative flex size-8 items-center justify-center overflow-hidden rounded-xl bg-sea text-[0.65rem] font-extrabold tracking-wide text-white shadow-[0_6px_16px_rgba(27,58,107,0.4)]">
             <span className="relative z-10">HA</span>
             <span className="header-logo-pulse absolute inset-0" />
           </span>

@@ -5,6 +5,7 @@ import {
   ExperienceSection,
   WorkSection,
   HowIWorkSection,
+  TestimonialsSection,
   StackSection,
   BackendSection,
   ContactSection,
@@ -23,6 +24,7 @@ export default function Home() {
         <ExperienceSection />
         <WorkSection />
         <HowIWorkSection />
+        <TestimonialsSection />
         <StackSection />
         <BackendSection />
         <ContactSection />

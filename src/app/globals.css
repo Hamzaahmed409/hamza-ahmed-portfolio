@@ -57,84 +57,84 @@
 }
 
 :root {
-  --background: #f1f5fb;
-  --foreground: #0f172a;
-  --ink: #0a1628;
-  --mist: #d6e0f0;
-  --sea: #1d4ed8;
-  --foam: #7db3ff;
-  --sand: #e8eef8;
-  --deep: #0a1628;
-  --card: #f8fafc;
-  --card-foreground: #0f172a;
-  --popover: #f8fafc;
-  --popover-foreground: #0f172a;
-  --primary: #1d4ed8;
-  --primary-foreground: #eff6ff;
-  --secondary: #dde5f2;
-  --secondary-foreground: #0f172a;
-  --muted: #e4ebf5;
-  --muted-foreground: #52607a;
-  --accent: #cfe0ff;
-  --accent-foreground: #1e3a8a;
+  --background: #f2f5f9;
+  --foreground: #0b1728;
+  --ink: #07111f;
+  --mist: #d4dce8;
+  --sea: #1b3a6b;
+  --foam: #7a9bc7;
+  --sand: #e8edf4;
+  --deep: #07111f;
+  --card: #f7f9fc;
+  --card-foreground: #0b1728;
+  --popover: #f7f9fc;
+  --popover-foreground: #0b1728;
+  --primary: #1b3a6b;
+  --primary-foreground: #f0f4fa;
+  --secondary: #dce3ee;
+  --secondary-foreground: #0b1728;
+  --muted: #e3e9f1;
+  --muted-foreground: #516078;
+  --accent: #d2dceb;
+  --accent-foreground: #0f2748;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #c5d0e0;
-  --input: #c5d0e0;
-  --ring: #1d4ed8;
-  --chart-1: #1d4ed8;
-  --chart-2: #0ea5e9;
+  --border: #c4cdda;
+  --input: #c4cdda;
+  --ring: #1b3a6b;
+  --chart-1: #1b3a6b;
+  --chart-2: #3d6a9f;
   --chart-3: #b45309;
   --chart-4: #334155;
   --chart-5: #64748b;
   --radius: 0.85rem;
-  --sidebar: #f8fafc;
-  --sidebar-foreground: #0f172a;
-  --sidebar-primary: #1d4ed8;
-  --sidebar-primary-foreground: #eff6ff;
-  --sidebar-accent: #e4ebf5;
-  --sidebar-accent-foreground: #0f172a;
-  --sidebar-border: #c5d0e0;
-  --sidebar-ring: #1d4ed8;
+  --sidebar: #f7f9fc;
+  --sidebar-foreground: #0b1728;
+  --sidebar-primary: #1b3a6b;
+  --sidebar-primary-foreground: #f0f4fa;
+  --sidebar-accent: #e3e9f1;
+  --sidebar-accent-foreground: #0b1728;
+  --sidebar-border: #c4cdda;
+  --sidebar-ring: #1b3a6b;
 }
 
 .dark {
-  --background: #070d18;
-  --foreground: #e8eef8;
-  --ink: #eef3fb;
-  --mist: #141e30;
-  --sea: #60a5fa;
-  --foam: #93c5fd;
-  --sand: #0c1424;
-  --deep: #050a14;
-  --card: #0c1424;
-  --card-foreground: #e8eef8;
-  --popover: #0c1424;
-  --popover-foreground: #e8eef8;
-  --primary: #60a5fa;
-  --primary-foreground: #0a1628;
-  --secondary: #141e30;
-  --secondary-foreground: #e8eef8;
-  --muted: #111a2a;
-  --muted-foreground: #9aabc4;
-  --accent: #15263f;
-  --accent-foreground: #bfdbfe;
+  --background: #060b14;
+  --foreground: #e8eef6;
+  --ink: #eef3f9;
+  --mist: #121a28;
+  --sea: #8ba3c7;
+  --foam: #a8bdd8;
+  --sand: #0b1220;
+  --deep: #04080f;
+  --card: #0b1220;
+  --card-foreground: #e8eef6;
+  --popover: #0b1220;
+  --popover-foreground: #e8eef6;
+  --primary: #8ba3c7;
+  --primary-foreground: #07111f;
+  --secondary: #121a28;
+  --secondary-foreground: #e8eef6;
+  --muted: #101826;
+  --muted-foreground: #9aaabc;
+  --accent: #152033;
+  --accent-foreground: #c5d4e8;
   --destructive: oklch(0.65 0.2 25);
-  --border: #1e2c42;
-  --input: #1e2c42;
-  --ring: #60a5fa;
-  --chart-1: #60a5fa;
-  --chart-2: #38bdf8;
+  --border: #1c2738;
+  --input: #1c2738;
+  --ring: #8ba3c7;
+  --chart-1: #8ba3c7;
+  --chart-2: #6b8fb5;
   --chart-3: #fbbf24;
   --chart-4: #94a3b8;
-  --chart-5: #818cf8;
-  --sidebar: #0c1424;
-  --sidebar-foreground: #e8eef8;
-  --sidebar-primary: #60a5fa;
-  --sidebar-primary-foreground: #0a1628;
-  --sidebar-accent: #141e30;
-  --sidebar-accent-foreground: #e8eef8;
-  --sidebar-border: #1e2c42;
-  --sidebar-ring: #60a5fa;
+  --chart-5: #64748b;
+  --sidebar: #0b1220;
+  --sidebar-foreground: #e8eef6;
+  --sidebar-primary: #8ba3c7;
+  --sidebar-primary-foreground: #07111f;
+  --sidebar-accent: #121a28;
+  --sidebar-accent-foreground: #e8eef6;
+  --sidebar-border: #1c2738;
+  --sidebar-ring: #8ba3c7;
 }
 
 @layer base {
@@ -145,18 +145,18 @@
     @apply bg-background text-foreground antialiased;
     background-color: var(--background);
     background-image:
-      radial-gradient(ellipse 80% 55% at 8% -8%, rgba(125, 179, 255, 0.32), transparent 55%),
-      radial-gradient(ellipse 55% 45% at 92% 0%, rgba(29, 78, 216, 0.12), transparent 50%),
-      radial-gradient(ellipse 40% 30% at 70% 100%, rgba(190, 210, 235, 0.45), transparent 60%),
-      linear-gradient(180deg, #eaf0f9 0%, #f1f5fb 45%, #f6f8fc 100%);
+      radial-gradient(ellipse 80% 55% at 8% -8%, rgba(122, 155, 199, 0.28), transparent 55%),
+      radial-gradient(ellipse 55% 45% at 92% 0%, rgba(27, 58, 107, 0.14), transparent 50%),
+      radial-gradient(ellipse 40% 30% at 70% 100%, rgba(180, 196, 216, 0.4), transparent 60%),
+      linear-gradient(180deg, #e8eef5 0%, #f2f5f9 45%, #f6f8fb 100%);
     background-attachment: fixed;
   }
   .dark body {
     background-image:
-      radial-gradient(ellipse 80% 55% at 8% -8%, rgba(96, 165, 250, 0.12), transparent 55%),
-      radial-gradient(ellipse 55% 45% at 92% 0%, rgba(37, 99, 235, 0.16), transparent 50%),
-      radial-gradient(ellipse 40% 30% at 70% 100%, rgba(15, 28, 48, 0.75), transparent 60%),
-      linear-gradient(180deg, #060b16 0%, #070d18 45%, #0a1220 100%);
+      radial-gradient(ellipse 80% 55% at 8% -8%, rgba(139, 163, 199, 0.1), transparent 55%),
+      radial-gradient(ellipse 55% 45% at 92% 0%, rgba(27, 58, 107, 0.22), transparent 50%),
+      radial-gradient(ellipse 40% 30% at 70% 100%, rgba(12, 20, 34, 0.8), transparent 60%),
+      linear-gradient(180deg, #050a12 0%, #060b14 45%, #0a1220 100%);
   }
   html {
     @apply font-sans scroll-smooth;
@@ -384,8 +384,8 @@
 .hero-glow {
   background: linear-gradient(
     115deg,
-    rgba(29, 78, 216, 0.2),
-    rgba(125, 179, 255, 0.18),
+    rgba(27, 58, 107, 0.22),
+    rgba(122, 155, 199, 0.2),
     rgba(15, 23, 42, 0.06)
   );
   background-size: 200% 200%;
@@ -400,9 +400,9 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(29, 78, 216, 0.15) 20%,
-    rgba(125, 179, 255, 0.55) 50%,
-    rgba(29, 78, 216, 0.15) 80%,
+    rgba(27, 58, 107, 0.18) 20%,
+    rgba(122, 155, 199, 0.5) 50%,
+    rgba(27, 58, 107, 0.18) 80%,
     transparent 100%
   );
   background-size: 200% 100%;
@@ -413,9 +413,9 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(96, 165, 250, 0.12) 20%,
-    rgba(147, 197, 253, 0.45) 50%,
-    rgba(96, 165, 250, 0.12) 80%,
+    rgba(139, 163, 199, 0.14) 20%,
+    rgba(168, 189, 216, 0.4) 50%,
+    rgba(139, 163, 199, 0.14) 80%,
     transparent 100%
   );
   background-size: 200% 100%;
@@ -458,7 +458,7 @@
 
 .header-cta:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(29, 78, 216, 0.28);
+  box-shadow: 0 10px 24px rgba(27, 58, 107, 0.3);
 }
 
 .header-cta:hover::after {

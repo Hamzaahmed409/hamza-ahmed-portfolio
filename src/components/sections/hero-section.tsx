@@ -1,12 +1,15 @@
 "use client";
 
-import { ArrowUpRight, Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, Calendar, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeroCanvasLazy } from "@/components/motion/hero-canvas-lazy";
 import { PhoneStage } from "@/components/sections/phone-stage";
 import { composeEmailHref, profile } from "@/content/profile";
 
 export function HeroSection() {
+  const bookingHref = profile.links.calendar;
+  const bookingIsExternal = bookingHref.startsWith("http");
+
   return (
     <section className="relative overflow-hidden">
       <HeroCanvasLazy />
@@ -44,31 +47,50 @@ export function HeroSection() {
             <Button
               render={
                 <a
-                  href={profile.links.resume}
-                  target="_blank"
-                  rel="noreferrer"
+                  href={bookingHref}
+                  {...(bookingIsExternal
+                    ? { target: "_blank", rel: "noreferrer" }
+                    : {})}
                 />
               }
               variant="outline"
               size="lg"
               className="h-11 sm:h-12 rounded-full border-border/70 bg-card/70 px-5 sm:px-6 text-sm backdrop-blur hover:border-sea/40 hover:text-sea"
             >
-              Download CV
-              <ArrowUpRight className="size-4" />
+              <Calendar className="size-4" />
+              Book a call
             </Button>
           </div>
-          <div className="animate-rise-delay-3 mt-7 sm:mt-8 flex flex-wrap items-center gap-x-6 gap-y-2.5 text-sm text-muted-foreground">
-            <span className="inline-flex items-center gap-2">
+          <div className="animate-rise-delay-3 mt-7 space-y-3 sm:mt-8">
+            <p className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
               <MapPin className="size-3.5 shrink-0 text-sea" />
-              {profile.location}
-            </span>
-            <a
-              href="#work"
-              className="inline-flex items-center gap-1 font-medium text-ink transition hover:text-sea"
-            >
-              See shipped apps
-              <ArrowUpRight className="size-3.5" />
-            </a>
+              <span>{profile.location}</span>
+              <span className="text-border" aria-hidden>
+                ·
+              </span>
+              <span>{profile.remoteNote}</span>
+            </p>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+              <a
+                href="#work"
+                className="inline-flex items-center gap-1 font-medium text-ink transition hover:text-sea"
+              >
+                See shipped apps
+                <ArrowUpRight className="size-3.5" />
+              </a>
+              <span className="text-border" aria-hidden>
+                ·
+              </span>
+              <a
+                href={profile.links.resume}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 font-medium text-ink transition hover:text-sea"
+              >
+                Download CV
+                <ArrowUpRight className="size-3.5" />
+              </a>
+            </div>
           </div>
         </div>
         <div className="animate-rise-delay-2">

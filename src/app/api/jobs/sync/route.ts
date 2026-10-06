@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getDiscordWebhookUrl, getPostedJobs, markJobsAsPosted } from "@/lib/discord-store";
+import { assertJobsEnabled } from "@/lib/jobs-guard";
 
 export const runtime = "nodejs";
 
@@ -103,6 +104,9 @@ async function fetchFromRemotive(searchQuery: string): Promise<RemotiveJob[]> {
 
 // POST trigger - execute sync and post to Discord
 export async function POST(request: Request) {
+  const blocked = assertJobsEnabled();
+  if (blocked) return blocked;
+
   try {
     let requestBody: { test?: boolean } = {};
     try {
@@ -258,6 +262,9 @@ export async function POST(request: Request) {
 
 // GET preview - fetch and display matching jobs WITHOUT posting them
 export async function GET() {
+  const blocked = assertJobsEnabled();
+  if (blocked) return blocked;
+
   try {
     const [jobs1, jobs2, jobs3] = await Promise.all([
       fetchFromRemotive("react native"),

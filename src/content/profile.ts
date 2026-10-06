@@ -54,7 +54,8 @@ export const profile = {
   role: "Senior Mobile & Frontend Engineer",
   tagline:
     "5+ years shipping React Native & React apps — white-label platforms, native bridges, VoIP, maps, and E2E tests. Remote-ready across US/EU time zones.",
-  location: "Karachi, Pakistan · Open to Remote / US-EU Shifts",
+  location: "Karachi, Pakistan",
+  remoteNote: "Remote / US-EU shifts",
   email: "hamza_ahmed95@icloud.com",
   phone: "+92-307-015-9904",
   availability: "Open to Senior Mobile & Frontend Roles",
@@ -62,7 +63,30 @@ export const profile = {
     linkedin: "https://www.linkedin.com/in/hamza-ahmed-9545s75",
     github: "https://github.com/HamzaAhmed4059",
     resume: "/Hamza_Ahmed_CV.pdf",
+    /** Set NEXT_PUBLIC_CAL_URL in .env for Cal.com / booking link */
+    calendar:
+      process.env.NEXT_PUBLIC_CAL_URL?.trim() ||
+      "https://www.linkedin.com/in/hamza-ahmed-9545s75",
   },
+  seo: {
+    title: "Hamza Ahmed · Senior Mobile & Frontend Engineer",
+    description:
+      "Senior Mobile & Frontend Engineer with 5+ years shipping React Native and React apps — white-label CRMs, VoIP, maps, and store releases. Remote-ready across US/EU time zones.",
+  },
+  testimonials: [
+    {
+      quote:
+        "Hamza is reliable and easy to work with. He understood the product goals, kept us updated, and delivered on time without drama.",
+      name: "Zohair Sario",
+      role: "PM, Knockio",
+    },
+    {
+      quote:
+        "Clear ownership and strong follow-through. He ships work that holds up — and makes collaboration simple for the whole team.",
+      name: "Wahab Dhindrani",
+      role: "CEO, Gotech",
+    },
+  ],
   impactStats: [
     {
       value: "11+",
@@ -234,7 +258,7 @@ export const profile = {
         "FCM",
         "SQLite",
       ],
-      accent: "#1D4ED8",
+      accent: "#1B3A6B",
       features: [
         "Leads + map canvassing (markers, clustering, filters)",
         "Territories, routes & live GPS tracking",
@@ -295,7 +319,7 @@ export const profile = {
         "Context-aware AI support chat — LLM replies that improve with use, not a static FAQ bot.",
       impact: "App Store + Play Store",
       stack: ["React Native", "LLM", "Supabase"],
-      accent: "#2563EB",
+      accent: "#1B3A6B",
       features: [
         "Context-aware support conversations",
         "Supabase backend for chat data",
