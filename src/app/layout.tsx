@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import { profile, flatStack } from "@/content/profile";
-import { JsonLd } from "@/components/json-ld";
-import { PwaInstall } from "@/components/pwa-install";
+import { JsonLd, PwaInstall } from "@/components/layout";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({

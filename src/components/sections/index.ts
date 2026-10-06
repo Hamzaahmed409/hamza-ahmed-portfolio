@@ -1,0 +1,10 @@
+export { HeroSection } from "./hero-section";
+export { StatsSection } from "./stats-section";
+export { ExperienceSection } from "./experience-section";
+export { WorkSection } from "./work-section";
+export { HowIWorkSection } from "./how-i-work-section";
+export { StackSection } from "./stack-section";
+export { BackendSection } from "./backend-section";
+export { ContactSection } from "./contact-section";
+export { ContactForm } from "./contact-form";
+export { PhoneStage } from "./phone-stage";

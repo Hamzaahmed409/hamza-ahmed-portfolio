@@ -1,6 +1,6 @@
 "use client";
 
-import { Reveal } from "@/components/reveal";
+import { Reveal } from "@/components/motion/reveal";
 import { profile } from "@/content/profile";
 
 export function ExperienceSection() {
