@@ -9,7 +9,7 @@ export function ExperienceSection() {
       id="experience"
       className="relative border-b border-border/50 bg-deep text-white"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(27,58,107,0.42),transparent_55%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,0,128,0.45),transparent_55%)]" />
       <div className="pointer-events-none absolute bottom-0 left-0 size-72 rounded-full bg-sea/10 blur-3xl" />
 
       <div className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">

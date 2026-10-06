@@ -15,7 +15,7 @@ export function HeroSection() {
       <HeroCanvasLazy />
       <div className="hero-glow pointer-events-none absolute inset-x-0 top-0 z-[1] h-[78%] opacity-90" />
       <div className="pointer-events-none absolute -left-24 top-32 z-[1] size-72 rounded-full bg-foam/30 blur-3xl animate-soft-pulse" />
-      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-5 pt-12 pb-10 sm:px-8 sm:pt-16 sm:pb-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8 lg:pt-14 lg:pb-12">
+      <div className="relative z-10 mx-auto grid max-w-6xl items-start gap-10 px-5 pt-12 pb-16 sm:px-8 sm:pt-16 sm:pb-20 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:gap-8 lg:pt-14 lg:pb-24">
         <div className="max-w-xl">
           <p className="animate-rise mb-3.5 text-sm font-medium tracking-[0.18em] text-sea uppercase">
             {profile.availability}
@@ -61,7 +61,7 @@ export function HeroSection() {
               Book a call
             </Button>
           </div>
-          <div className="animate-rise-delay-3 mt-7 space-y-3 sm:mt-8">
+          <div className="animate-rise-delay-3 mt-8 space-y-3 border-t border-border/40 pt-6 sm:mt-10 sm:pt-7">
             <p className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
               <MapPin className="size-3.5 shrink-0 text-sea" />
               <span>{profile.location}</span>
